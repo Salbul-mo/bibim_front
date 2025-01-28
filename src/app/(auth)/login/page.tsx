@@ -19,10 +19,11 @@ import { authClient } from "@/modules/auth/api/client";
 import { useAuthStore } from "@/modules/auth/store/auth.store";
 import Cookies from "js-cookie";
 import type { z } from "zod";
+import { Suspense } from "react";
 
 type FormValues = z.infer<typeof loginSchema>;
 
-export default function LoginPage() {
+function LoginForm() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const { login: storeLogin } = useAuthStore();
@@ -94,5 +95,13 @@ export default function LoginPage() {
 				</form>
 			</Form>
 		</div>
+	);
+}
+
+export default function LoginPage() {
+	return (
+		<Suspense fallback={<div>Loading...</div>}>
+			<LoginForm />
+		</Suspense>
 	);
 }
