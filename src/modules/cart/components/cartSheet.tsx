@@ -55,6 +55,7 @@ export function CartSheet() {
 			currency: "CURRENCY_KRW", // 필수 필드 추가
 			channelKey: "channel-key-80de867c-23da-4dbb-8860-ecdce8c51f03",
 			payMethod: "CARD",
+			noticeUrls: ["https://viable-herring-lively.ngrok-free.app/api/webhook/payments/receive"],
 		};
 
 		PortOne.requestPayment(paymentData).then(async (response) => {
