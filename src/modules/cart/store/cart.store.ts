@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { z } from 'zod';
+import { set, z } from 'zod';
 
 // Zod 스키마 정의
 const CartItemSchema = z.object({
@@ -26,6 +26,8 @@ interface CartState {
   clearCart: () => void;
   isLoading: boolean;
   setCart: (data: { items: CartItem[], totalPrice: number, totalCount: number }) => void;
+  checkoutItems: CartItem[];
+  setCheckoutItems: (items: CartItem[]) => void;
 }
 
 export const useCartStore = create<CartState>()(
@@ -51,6 +53,9 @@ export const useCartStore = create<CartState>()(
       isLoading: false,
       error: null,
       setCart: (data: { items: CartItem[], totalPrice: number, totalCount: number }) => set({ items: data.items, totalPrice: data.totalPrice, totalCount: data.totalCount }),
+
+      checkoutItems: [],
+      setCheckoutItems: (items: CartItem[]) => set({checkoutItems: items}),
     }),
     {
       name: 'cart-storage',

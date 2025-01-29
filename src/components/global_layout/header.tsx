@@ -31,6 +31,7 @@ export default function Header() {
 				<Link href="/" className="flex items-center gap-2">
 					<span className="text-xl font-bold text-primary">EduPlatform</span>
 				</Link>
+			
 
 				{/* 우측 메뉴 */}
 				<div className="flex items-center gap-6">
@@ -55,9 +56,7 @@ export default function Header() {
 							</>
 						) : (
 							<Link href="/login">
-								<Button size="sm" className="bg-primary hover:bg-primary-dark">
 									로그인
-								</Button>
 							</Link>
 						)}
 					</div>
