@@ -9,7 +9,6 @@ export const cartClient = {
   getCart: async (tokens: { accessToken: string }) => {
     const response = await apiClient.get(`${API_BASE_URL}/cart/list`, {
       headers: { Authorization: `${tokens?.accessToken}`,
-        'Set-Cookie': `refreshToken=${Cookies.get('refreshToken')}; HttpOnly; SameSite=none;`
       },
     });
     return response.data;
@@ -23,19 +22,17 @@ export const cartClient = {
         'Content-Type': 'application/json',
         Authorization: `${token}`,
       },
-      body: JSON.stringify(item),
+      data: item,
     });
     return response.data;
   },
 
   // 장바구니에서 상품 제거
   removeFromCart: async (tokens: { accessToken: string, refreshToken: string }, cartId: string) => {
-    const response = await apiClient.post(`${API_BASE_URL}/cart/delete/`, {
-      method: 'POST',
+    const response = await apiClient.delete(`${API_BASE_URL}/cart/${cartId}`, {
       headers: {
         Authorization: `${tokens.accessToken}`,
       },
-      body: JSON.stringify({ cartId }),
     });
     return response.data;
   },
