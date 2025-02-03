@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useAuthStore } from "@/modules/auth/store/auth.store";
+import { useAuthStore } from "@/features/auth/store/auth.store";
 import { usePathname, useRouter } from "next/navigation";
 
 const PUBLIC_PATHS = ["/login", "/signup"];

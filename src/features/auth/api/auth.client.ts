@@ -28,5 +28,21 @@ export const authClient = {
     }
 
     return response.json();
-  },
+    },
+
+  logout: async (token: string) => {
+    const response = await fetch(`${API_BASE_URL}/auth/logout`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json',
+        'Authorization': `${token}`
+       },
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || '로그아웃 실패');
+    }
+
+    return response.json();
+  }
 };

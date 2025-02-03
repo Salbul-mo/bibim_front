@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useAuthStore } from '@/modules/auth/store/auth.store';
+import { useAuthStore } from '@/features/auth/store/auth.store';
 import { useCartStore } from '../store/cart.store';
 import { cartClient } from '../api/cart.client';
 

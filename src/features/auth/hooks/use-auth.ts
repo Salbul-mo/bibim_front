@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { authClient } from "../api/client";
+import { authClient } from "../api/auth.client";
 import { useAuthStore } from "../store/auth.store";
 import type { Credential } from "@/core/types/auth";
 

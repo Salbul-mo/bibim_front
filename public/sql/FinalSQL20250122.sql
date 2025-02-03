@@ -31,7 +31,7 @@ CREATE TABLE academy
     academy_detail_addr varchar(500), # 학원 실 주소지 상세 주소
     academy_postalcode  varchar(10),  # 학원 실 주소지 우편번호
     academy_owner       varchar(20),  # 학원 대표 이름
-    academy_contect     varchar(50),  # 학원 대표 연락처
+    academy_contact     varchar(50),  # 학원 대표 연락처
     business_regis_num  varchar(500)  # 학원 사업자 등록 번호
 );
 
