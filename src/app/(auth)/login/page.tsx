@@ -13,10 +13,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { loginSchema } from "@/modules/auth/validations/auth";
+import { loginSchema } from "@/features/auth/validations/auth";
 import { toast } from "sonner";
-import { authClient } from "@/modules/auth/api/client";
-import { useAuthStore } from "@/modules/auth/store/auth.store";
+import { authClient } from "@/features/auth/api/auth.client";
+import { useAuthStore } from "@/features/auth/store/auth.store";
 import Cookies from "js-cookie";
 import type { z } from "zod";
 import { Suspense } from "react";

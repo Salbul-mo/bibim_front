@@ -1,28 +1,31 @@
 "use client";
 
-import Link from "next/link";
-import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
-import { useCartStore } from "@/modules/cart/store/cart.store";
-import { useAuthStore } from "@/modules/auth/store/auth.store";
-import { CartSheet } from "@/modules/cart/components/cartSheet";
-
-const menuItems = [
-	{
-		title: "대시보드",
-		href: "/dashboard",
-	},
-	{
-		title: "내 강의실",
-		href: "/my-courses",
-	},
-];
+import { authClient } from "@/features/auth/api/auth.client";
+import { useAuthStore } from "@/features/auth/store/auth.store";
+import { CartSheet } from "@/features/cart/components/cartSheet";
+import { useCartStore } from "@/features/cart/store/cart.store";
+import { useTheme } from "next-themes";
+import Link from "next/link";
 
 export default function Header() {
 	const { theme } = useTheme();
-	const { user, isAuthenticated, logout } = useAuthStore();
-	const cartItems = useCartStore((state) => state.items);
+	const { user, isAuthenticated, logout, tokens } = useAuthStore();
+	const { logout: logoutApi } = authClient;
+
+	const handleLogout = async () => {
+		try {
+			const token = tokens?.accessToken;
+			if (token) {
+				await logoutApi(token);
+				await logout();
+			}
+		} catch (error) {
+			console.error(error);
+		} finally {
+			logout();
+		}
+	};
 
 	return (
 		<header className="w-full bg-white dark:bg-gray-800 border-b h-16 flex items-center fixed top-0 z-50 shadow-sm">
@@ -31,7 +34,12 @@ export default function Header() {
 				<Link href="/" className="flex items-center gap-2">
 					<span className="text-xl font-bold text-primary">EduPlatform</span>
 				</Link>
-			
+
+				<Link href="/course/list">
+					<Button asChild>
+						<span>강의 목록</span>
+					</Button>
+				</Link>
 
 				{/* 우측 메뉴 */}
 				<div className="flex items-center gap-6">
@@ -43,21 +51,20 @@ export default function Header() {
 						{isAuthenticated ? (
 							<>
 								<div className="hidden sm:block text-sm text-gray-600 dark:text-gray-300">
-									{user?.email}
+									{user?.email} 님
 								</div>
 								<Button
+									asChild
 									variant="outline"
 									size="sm"
-									onClick={logout}
+									onClick={handleLogout}
 									className="hover:bg-gray-50 dark:hover:bg-gray-700"
 								>
 									로그아웃
 								</Button>
 							</>
 						) : (
-							<Link href="/login">
-									로그인
-							</Link>
+							<Link href="/login">로그인</Link>
 						)}
 					</div>
 				</div>

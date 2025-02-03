@@ -12,10 +12,10 @@ import {
 	SheetTrigger,
 } from "@/components/ui/sheet";
 import { ShoppingCart } from "lucide-react";
-import { useAuthStore } from "@/modules/auth/store/auth.store";
+import { useAuthStore } from "@/features/auth/store/auth.store";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { CartItemList } from "../components/CartItemList";
+import { CartItemList } from "./CartItemList";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { cartClient } from "../api/cart.client";
 import { useCartStore } from "../store/cart.store";
@@ -109,9 +109,8 @@ export function CartSheet() {
 					})
 				}
 			>
-				<Button variant="outline" size="icon" className="relative">
+				<Button asChild variant="outline" size="icon" className="relative">
 					<ShoppingCart className="h-4 w-4" />
-					<span className="sr-only">장바구니 열기</span>
 				</Button>
 			</SheetTrigger>
 			<SheetContent
@@ -151,7 +150,7 @@ export function CartSheet() {
 							<span className="font-bold text-primary">₩{(totalPrice ?? 0).toLocaleString()}</span>
 						)}
 					</div>
-					<Button className="w-full mt-4" onClick={checkoutHandler}>
+					<Button asChild className="w-full mt-4" onClick={checkoutHandler}>
 						결제하기
 					</Button>
 				</SheetFooter>

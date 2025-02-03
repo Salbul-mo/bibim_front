@@ -5,16 +5,18 @@ import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import { useCartStore } from "../store/cart.store";
 import { cartClient } from "../api/cart.client";
-import { useAuthStore } from "@/modules/auth/store/auth.store";
+import { useAuthStore } from "@/features/auth/store/auth.store";
 
 export const CartItemList = ({ items }: { items: CartItem[] }) => {
 	const { removeItem } = useCartStore();
 	const { tokens } = useAuthStore();
 
-
 	const handleRemoveItem = (cartId: string) => {
-		cartClient.removeFromCart({ accessToken: tokens?.accessToken || "", refreshToken: tokens?.refreshToken || "" }, cartId);
-		
+		cartClient.removeFromCart(
+			{ accessToken: tokens?.accessToken || "", refreshToken: tokens?.refreshToken || "" },
+			cartId
+		);
+
 		removeItem(cartId);
 	};
 
