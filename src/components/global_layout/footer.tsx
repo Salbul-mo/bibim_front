@@ -1,22 +1,20 @@
 "use client";
 
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 
 export default function Footer() {
 	const { theme } = useTheme();
-
+	const logosrc = theme === "dark" ? "/images/logo_gray.png" : "/images/logo_black.jpg";
 	return (
-		<footer className="border-t p-6 grid md:grid-cols-2 gap-8">
+		<footer className="border-t bg-background dark:bg-dark-background text-text dark:text-dark-text p-6 grid md:grid-cols-2 gap-8">
 			{/* 기업 정보 */}
-			
+
 			<div className="space-y-2 text-sm">
-				<div className="flex items-center gap-2">
-					<Image src="/images/logo_black.jpg" alt="Code Craft" width={100} height={100} />
+				<div className="flex items-center gap-2 mb-2">
+					<Image src={logosrc} alt="Code Craft" width={130} height={130} />
 				</div>
-				<h3 className="font-semibold">Code Craft</h3>
 				코드 크래프트 <br />
 				대표: 김찬 <br />
 				개인정보책임관리자: 김찬 <br />

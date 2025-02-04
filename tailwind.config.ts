@@ -8,7 +8,35 @@ const config = {
   theme: {
   	extend: {
   		colors: {
-  			background: 'hsl(var(--background))',
+				// 라이트 모드
+				primary: {
+					DEFAULT: "#3b82f6",
+					foreground: "#fffff",
+				},
+				background: {
+					DEFAULT: "#ffffff",
+					foreground: "#f3f4f6",
+				},
+				text: {
+					DEFAULT: "#111827",
+					secondary: "#4b5563",
+				},
+
+				// 다크모드
+				dark: {
+					primary: {
+						DEFAULT: "#60a5fa",
+						foreground: "#1f2937",
+					},
+					background: {
+						DEFAULT: "#111827",
+						foreground: "#1f2937",
+					},
+					text: {
+						DEFAULT: "#f9fafb",
+						secondary: "#d1d5db",
+					},
+				},
   			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
@@ -17,10 +45,6 @@ const config = {
   			popover: {
   				DEFAULT: 'hsl(var(--popover))',
   				foreground: 'hsl(var(--popover-foreground))'
-  			},
-  			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',

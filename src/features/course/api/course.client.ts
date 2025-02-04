@@ -29,4 +29,20 @@ export const courseClient = {
     }
     return response.data;
   },
+
+  getPurchasedCourses: async (accessToken: string) => {
+    const response = await apiClient.get('/api/course/purchased', {
+      headers: {
+        Authorization: `${accessToken}`,
+      },
+    });
+    
+    if (response.status !== 200) {
+      const message = response.data.message;
+      console.error(message);
+      throw new Error(message);
+    }
+    return response.data;
+  }
 };
+

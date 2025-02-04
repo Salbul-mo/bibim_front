@@ -1,6 +1,8 @@
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import Cookies from 'js-cookie'
+import { usePurchasedCourseStore } from '@/features/course/store/purchased-course.store'
+import { useCartStore } from '@/features/cart/store/cart.store'
 
 type AuthState = {
   user: {
@@ -23,6 +25,7 @@ type AuthState = {
     refreshToken: string
   }) => void
   logout: () => void
+  updateAccessToken: (newAccessToken: string) => void
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -54,6 +57,18 @@ export const useAuthStore = create<AuthState>()(
           tokens: null, 
           isAuthenticated: false 
         });
+        usePurchasedCourseStore.getState().setPurchasedCourses([]);
+        useCartStore.getState().setCart({ items: [], totalPrice: 0, totalCount: 0 });
+      },
+
+      updateAccessToken: (newAccessToken: string) => {
+        set((state) => ({
+          ...state,
+          tokens: {
+            accessToken: newAccessToken,
+            refreshToken: state.tokens?.refreshToken ?? '',
+          }
+        }));
       },
     }),
     {

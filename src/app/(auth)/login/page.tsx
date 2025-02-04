@@ -44,9 +44,13 @@ function LoginForm() {
 			// 리프레시 토큰만 쿠키에 저장
 			Cookies.set("refreshToken", response.refreshToken, {
 				path: "/",
-				secure: process.env.NODE_ENV === "production",
+				// secure: process.env.NODE_ENV === "production",
 				sameSite: "lax",
 				expires: 7,
+				domain:
+					process.env.NODE_ENV === "production"
+						? ".viable-herring-lively.ngrok-free.app"
+						: "localhost",
 			});
 
 			storeLogin(response);

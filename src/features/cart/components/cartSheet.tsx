@@ -20,7 +20,7 @@ import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import { cartClient } from "../api/cart.client";
 import { useCartStore } from "../store/cart.store";
 import { Skeleton } from "@/components/ui/skeleton";
-import PortOne, { requestPayment, PaymentRequest } from "@portone/browser-sdk/v2";
+import PortOne, { PaymentRequest } from "@portone/browser-sdk/v2";
 import apiClient from "@/lib/api-client";
 export function CartSheet() {
 	const { user, tokens, isAuthenticated } = useAuthStore();
@@ -110,7 +110,7 @@ export function CartSheet() {
 				}
 			>
 				<Button asChild variant="outline" size="icon" className="relative">
-					<ShoppingCart className="h-4 w-4" />
+					<ShoppingCart className="h-5 w-5" />
 				</Button>
 			</SheetTrigger>
 			<SheetContent
@@ -150,7 +150,7 @@ export function CartSheet() {
 							<span className="font-bold text-primary">₩{(totalPrice ?? 0).toLocaleString()}</span>
 						)}
 					</div>
-					<Button asChild className="w-full mt-4" onClick={checkoutHandler}>
+					<Button className="w-full mt-4" onClick={checkoutHandler}>
 						결제하기
 					</Button>
 				</SheetFooter>

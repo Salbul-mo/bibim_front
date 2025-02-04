@@ -124,7 +124,7 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background dark:bg-dark-background-foreground text-primary-foreground dark:text-dark-text;
   }
 }
 
