@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 import { authClient } from "../api/auth.client";
 import { useAuthStore } from "../store/auth.store";
-import { useStudyHistoryStore } from "@/features/course/store/study-history.store";
 
 
 export const useAuth = () => {
@@ -15,7 +14,6 @@ export const useAuth = () => {
   const { user, isAuthenticated, tokens } = useAuthStore();
   const login = useAuthStore((state) => state.login);
   const logout = useAuthStore((state) => state.logout);
-  const setStudyHistory = useStudyHistoryStore((state) => state.setStudyHistory);
   const setPurchasedCourses = usePurchasedCourseStore((state) => state.setPurchasedCourses);
 
   const handleLogin = useCallback(async (credentials: Credential) => {
@@ -37,7 +35,6 @@ export const useAuth = () => {
   const handleLogout = useCallback(() => {
     logout();
     usePurchasedCourseStore.getState().setPurchasedCourses([]); // 직접 store 접근
-    useStudyHistoryStore.getState().setStudyHistory([]);
     router.push('/login');
   }, [logout, router]);
 
