@@ -22,6 +22,7 @@ export const authClient = {
       body: JSON.stringify(credentials),
     });
 
+
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || '로그인 실패');
