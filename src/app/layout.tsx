@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ko" suppressHydrationWarning>
-			<body className={`${GeistSans.className} antialiased min-h-screen`}>
+			<body suppressHydrationWarning className={`${GeistSans.className} antialiased min-h-screen`}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
@@ -23,7 +23,7 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					<AuthProvider>
-						<div className="relative flex min-h-screen flex-col">
+						<div suppressHydrationWarning className="justify-center flex min-h-screen flex-col">
 							<Header />
 							<main className="flex-1">{children}</main>
 							<Footer />

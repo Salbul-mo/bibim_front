@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
+import { usePurchasedCourseStore } from "@/features/course/store/purchased-course.store";
 export default function Course() {
 	const { tokens } = useAuthStore();
 	const { getCourseList } = courseClient;
@@ -19,7 +19,7 @@ export default function Course() {
 			setCourseList(response);
 		}
 		fetchCourseList();
-	}, []);
+	}, [tokens]);
 
 	if (!courseList) {
 		return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
@@ -58,12 +58,18 @@ export default function Course() {
 						{/* 강의 정보 */}
 						<div className="p-4">
 							<h3 className="font-semibold text-lg mb-2">{course.courseName}</h3>
-							<p className="text-sm text-gray-600 mb-2">{course.courseSubject}</p>
-							<p className="text-sm text-gray-500 mb-4 line-clamp-2">{course.courseInfo}</p>
+							<p className="text-sm text-gray-600 dark:text-dark-text-secondary mb-2">
+								{course.courseSubject}
+							</p>
+							<p className="text-sm text-gray-600 dark:text-dark-text-secondary mb-4 line-clamp-2">
+								{course.courseInfo}
+							</p>
 
 							<div className="flex items-center justify-between">
 								<div>
-									<p className="text-sm text-gray-600">{course.teacherName} 강사</p>
+									<p className="text-sm text-gray-600 dark:text-dark-text-secondary">
+										{course.teacherName} 강사
+									</p>
 									<p className="font-medium text-primary">₩{course.coursePrice.toLocaleString()}</p>
 								</div>
 								<Button variant="outline" size="sm" asChild>
@@ -73,7 +79,10 @@ export default function Course() {
 
 							<div className="mt-3 flex flex-wrap gap-2">
 								{course.courseTag.split(",").map((tag, index) => (
-									<span key={index} className="text-xs bg-gray-100 px-2 py-1 rounded">
+									<span
+										key={index}
+										className="text-xs bg-dark-background text-gray-300 dark:text-gray-700 dark:bg-gray-300 px-2 py-1 rounded"
+									>
 										{tag.trim()}
 									</span>
 								))}

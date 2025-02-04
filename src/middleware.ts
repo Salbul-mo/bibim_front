@@ -1,13 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// 로그인이 필요한 페이지
-const PROTECTED_ROUTES = [
-  '/profile', 
-  '/settings',
-  '/payment',
-  '/my-courses'
-];
 
 // 로그인한 사용자가 접근하면 안 되는 페이지
 const AUTH_ROUTES = ['/login', '/signup'];
@@ -29,14 +22,21 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // 보호된 경로 처리
-  if (PROTECTED_ROUTES.some(route => pathname.startsWith(route))) {
-    if (!refreshToken) {
-      return NextResponse.redirect(new URL('/login', request.url));
+  // 프로덕션에서만 동작하는 보안 규칙 추가
+
+ /*  if (process.env.NODE_ENV === 'production') {
+    if (pathname.startsWith('/admin')) {
+      const ip = request.ip;
+      const allowedIps = ['43.203.226.104']; 
+      if (!allowedIps.includes(ip ?? '')) {
+        return NextResponse.redirect(new URL('/403', request.url));
+      }
+
     }
-  }
+  } */
 
   return NextResponse.next();
+
 }
   
 

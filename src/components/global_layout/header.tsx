@@ -4,14 +4,40 @@ import { Button } from "@/components/ui/button";
 import { authClient } from "@/features/auth/api/auth.client";
 import { useAuthStore } from "@/features/auth/store/auth.store";
 import { CartSheet } from "@/features/cart/components/cartSheet";
-import { useCartStore } from "@/features/cart/store/cart.store";
-import { useTheme } from "next-themes";
 import Link from "next/link";
+import { ThemeToggle } from "./theme-toggle";
+import Image from "next/image";
+import { useSafeTheme } from "../utils/theme";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useEffect } from "react";
+import { useState } from "react";
 
 export default function Header() {
-	const { theme } = useTheme();
+	const { theme } = useSafeTheme();
+	const [mounted, setMounted] = useState(false);
+
 	const { user, isAuthenticated, logout, tokens } = useAuthStore();
 	const { logout: logoutApi } = authClient;
+	const logosrc = theme === "dark" ? "/images/logo_gray.png" : "/images/logo_black.jpg";
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	if (!mounted) {
+		return (
+			<header className="w-full bg-background dark:bg-dark-background border-b h-16 flex items-center fixed top-0 z-50 shadow-sm">
+				<div className="container mx-auto px-4 flex items-center justify-between">
+					<Skeleton className="h-8 w-32" />
+					<Skeleton className="h-9 w-24" />
+					<div className="flex items-center gap-6">
+						<Skeleton className="h-8 w-8" />
+						<Skeleton className="h-8 w-20" />
+					</div>
+				</div>
+			</header>
+		);
+	}
 
 	const handleLogout = async () => {
 		try {
@@ -28,11 +54,10 @@ export default function Header() {
 	};
 
 	return (
-		<header className="w-full bg-white dark:bg-gray-800 border-b h-16 flex items-center fixed top-0 z-50 shadow-sm">
+		<header className="w-full bg-background dark:bg-dark-background border-b h-16 flex items-center fixed top-0 z-50 shadow-sm">
 			<div className="container mx-auto px-4 flex items-center justify-between">
-				{/* 로고 */}
 				<Link href="/" className="flex items-center gap-2">
-					<span className="text-xl font-bold text-primary">EduPlatform</span>
+					<Image src={logosrc} alt="Code Craft" width={130} height={130} priority />
 				</Link>
 
 				<Link href="/course/list">
@@ -41,12 +66,11 @@ export default function Header() {
 					</Button>
 				</Link>
 
-				{/* 우측 메뉴 */}
 				<div className="flex items-center gap-6">
-					{/* 장바구니 */}
 					{isAuthenticated && <CartSheet />}
 
-					{/* 사용자 정보 */}
+					<ThemeToggle />
+
 					<div className="flex items-center gap-4">
 						{isAuthenticated ? (
 							<>
@@ -54,7 +78,6 @@ export default function Header() {
 									{user?.email} 님
 								</div>
 								<Button
-									asChild
 									variant="outline"
 									size="sm"
 									onClick={handleLogout}

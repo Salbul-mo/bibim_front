@@ -50,3 +50,13 @@ export type CourseDetail = {
   classCount: number;
   classList: Class[];
 };
+
+export type PurchasedCourse = {
+  courseId: string;
+  createdAt: string;
+}
+
+export type PurchasedCourseList = {
+  purchasedCourses: PurchasedCourse[];
+}
+

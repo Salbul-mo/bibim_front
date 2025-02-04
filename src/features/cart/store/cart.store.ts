@@ -7,12 +7,11 @@ const CartItemSchema = z.object({
   cartId: z.string(),
   courseName: z.string(),
   coursePrice: z.number(),
-  courseImgName: z.string().url(),
+  courseProfilePath: z.string().url(),
   teacherName: z.string(),
   courseSubject: z.string(),
   courseDiff: z.string(),
-  academyName: z.string(),
-  studentId: z.string(),
+  studentId: z.string().optional(),
 });
 
 type CartItem = z.infer<typeof CartItemSchema>;
