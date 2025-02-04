@@ -16,7 +16,7 @@ const handleResponse = async (response: Response) => {
 
 export const authClient = {
   login: async (credentials: Credential) => {
-    const response = await fetch(`${API_BASE_URL}/auth/login`, {
+    const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(credentials),
@@ -31,7 +31,7 @@ export const authClient = {
     },
 
   logout: async (token: string) => {
-    const response = await fetch(`${API_BASE_URL}/auth/logout`, {
+    const response = await fetch(`${API_BASE_URL}/api/auth/logout`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json',
         'Authorization': `${token}`
