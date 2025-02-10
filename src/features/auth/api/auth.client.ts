@@ -56,15 +56,9 @@ export const authClient = {
 			method: "POST",
 			headers: { "Content-Type": "application/json", "accept": "application/json"},
 
-			body: JSON.stringify({
-        academyId: process.env.NEXT_PUBLIC_ACADEMY_ID,
-        studentName: student.studentName,
-        studentEmail: student.studentEmail,
-        studentPassword: student.studentPassword,
-        studentPhone: student.studentPhone,
-        adsAgreed: student.adsAgreed ? 1 : 0,
-      }),
+			body: JSON.stringify(student),
     });
+
 
     if (!response.ok) {
       const error = await response.json();

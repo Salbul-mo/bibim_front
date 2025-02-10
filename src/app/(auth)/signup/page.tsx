@@ -27,12 +27,14 @@ export default function SignupForm() {
 	const form = useForm<SignupFormValues>({
 		resolver: zodResolver(signupSchema),
 		defaultValues: {
-			studentName: "",
-			studentEmail: "",
-			studentPassword: "",
-			studentPhone: "",
-			adsAgreed: 0,
-			academyId: process.env.NEXT_PUBLIC_ACADEMY_ID,
+			student: {
+				studentName: "",
+				studentEmail: "",
+				studentPassword: "",
+				studentPhone: "",
+				adsAgreed: 0,
+				academyId: process.env.NEXT_PUBLIC_ACADEMY_ID,
+			},
 		},
 	});
 
@@ -46,7 +48,6 @@ export default function SignupForm() {
 
 			const response = await authClient.signup({
 				...data,
-				academyId: process.env.NEXT_PUBLIC_ACADEMY_ID,
 			});
 
 			toast.success("회원가입이 완료되었습니다");
@@ -76,7 +77,7 @@ export default function SignupForm() {
 					<form onSubmit={form.handleSubmit(onSubmit)} className="w-full max-w-md space-y-6">
 						<FormField
 							control={form.control}
-							name="studentName"
+							name="student.studentName"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>이름</FormLabel>
@@ -90,7 +91,7 @@ export default function SignupForm() {
 
 						<FormField
 							control={form.control}
-							name="studentEmail"
+							name="student.studentEmail"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>이메일</FormLabel>
@@ -104,7 +105,7 @@ export default function SignupForm() {
 
 						<FormField
 							control={form.control}
-							name="studentPassword"
+							name="student.studentPassword"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>비밀번호</FormLabel>
@@ -118,7 +119,7 @@ export default function SignupForm() {
 
 						<FormField
 							control={form.control}
-							name="studentPhone"
+							name="student.studentPhone"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>휴대폰 번호</FormLabel>
@@ -132,7 +133,7 @@ export default function SignupForm() {
 
 						<FormField
 							control={form.control}
-							name="adsAgreed"
+							name="student.adsAgreed"
 							render={({ field }) => (
 								<FormItem className="flex items-center space-x-2">
 									<FormControl>
