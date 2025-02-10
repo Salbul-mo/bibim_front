@@ -52,7 +52,7 @@ export const authClient = {
   },
 
 	signup: async (student: SignupFormValues) => {
-		const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
+		const response = await fetch(`${API_BASE_URL}/api/auth/join`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json", "accept": "application/json"},
 
