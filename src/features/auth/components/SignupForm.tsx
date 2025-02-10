@@ -9,7 +9,6 @@ import { SignupFormValues, signupSchema } from "@/features/auth/validations/auth
 import { useRouter } from "next/navigation";
 
 import { useState } from "react";
-import { authClient } from "@/features/auth/api/auth.client";
 import Link from "next/link";
 
 // 폼 로직만 포함하는 클라이언트 컴포넌트
@@ -35,7 +34,7 @@ export function SignupForm() {
 				academyId: process.env.NEXT_PUBLIC_ACADEMY_ID as string,
 				adsAgreed: data.adsAgreed ? 1 : 0,
 			};
-			const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/signup`, {
+			const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/join`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
