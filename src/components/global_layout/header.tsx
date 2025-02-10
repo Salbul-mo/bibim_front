@@ -11,6 +11,7 @@ import { useSafeTheme } from "../utils/theme";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useEffect } from "react";
 import { useState } from "react";
+import { cookies } from "next/headers";
 
 export default function Header() {
 	const { theme } = useSafeTheme();
@@ -46,6 +47,9 @@ export default function Header() {
 				await logoutApi(token);
 				await logout();
 			}
+
+			// 쿠키 삭제 한번 더 실행 (안전장치)
+			cookies().delete("refreshToken");
 		} catch (error) {
 			console.error(error);
 		} finally {
