@@ -25,7 +25,7 @@ export const signupSchema = z.object({
   studentPhone: z.string().min(10, "전화번호를 입력해주세요")
   .regex(/^010-\d{4}-\d{4}$/, "010-xxxx-xxxx 형식으로 입력해주세요"),
   academyId: z.string().uuid("유효한 학원 ID가 아닙니다"),
-  adsAgreed: z.number().optional()
+  adsAgreed: z.boolean().optional()
 });
 
 

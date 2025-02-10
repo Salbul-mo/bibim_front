@@ -55,8 +55,16 @@ export const authClient = {
 		const response = await fetch(`${API_BASE_URL}/api/auth/join`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json", "accept": "application/json"},
-			body: JSON.stringify(student),
+			body: JSON.stringify({
+        studentName: student.studentName,
+        studentEmail: student.studentEmail,
+        studentPassword: student.studentPassword,
+        studentPhone: student.studentPhone,
+        academyId: student.academyId,
+        adsAgreed: student.adsAgreed ? 1 : 0,
+      }),
     });
+
 
 
     if (!response.ok) {

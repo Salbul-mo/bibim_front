@@ -19,6 +19,7 @@ import { authClient } from "@/features/auth/api/auth.client";
 import Link from "next/link";
 import { useState } from "react";
 import { z } from "zod";
+import { Checkbox } from "@/components/ui/checkbox";
 
 // 폼 로직만 포함하는 클라이언트 컴포넌트
 export default function JoinForm() {
@@ -34,8 +35,8 @@ export default function JoinForm() {
 			studentEmail: "",
 			studentPassword: "",
 			studentPhone: "",
-			adsAgreed: 0,
-			academyId: process.env.NEXT_PUBLIC_ACADEMY_ID,
+			adsAgreed: false,
+			academyId: "cd1918cc-820d-4ac8-be7c-c46a5f943047",
 		},
 	});
 
@@ -144,11 +145,10 @@ export default function JoinForm() {
 							render={({ field }) => (
 								<FormItem className="flex items-center space-x-2">
 									<FormControl>
-										<Input
-											type="checkbox"
-											onChange={field.onChange}
+										<Checkbox
+											checked={field.value}
+											onCheckedChange={(checked: boolean) => field.onChange(checked)}
 											className="h-4 w-4"
-											value={1}
 										/>
 									</FormControl>
 
