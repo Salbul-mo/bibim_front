@@ -55,7 +55,7 @@ export function CartSheet() {
 			currency: "CURRENCY_KRW", // 필수 필드 추가
 			channelKey: "channel-key-80de867c-23da-4dbb-8860-ecdce8c51f03",
 			payMethod: "CARD",
-			noticeUrls: ["http://43.203.226.104:9000/api/webhook/payments/receive"],
+			noticeUrls: [process.env.NEXT_PUBLIC_API_BASE_URL + "/api/webhook/payments/receive"],
 		};
 
 		PortOne.requestPayment(paymentData).then(async (response) => {
