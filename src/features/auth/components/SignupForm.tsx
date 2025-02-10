@@ -25,6 +25,8 @@ export function SignupForm() {
 	});
 
 	const onSubmit = async (data: SignupFormValues) => {
+		console.log(data);
+
 		try {
 			setIsLoading(true);
 			// 학원 ID 추가
@@ -69,12 +71,7 @@ export function SignupForm() {
 					</p>
 				</div>
 
-				<form
-					onSubmit={handleSubmit(onSubmit, (errors) => {
-						console.log(errors);
-					})}
-					className="mt-8 space-y-6"
-				>
+				<form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
 					<div className="space-y-4">
 						<div>
 							<label
