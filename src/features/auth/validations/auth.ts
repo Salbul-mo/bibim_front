@@ -14,7 +14,6 @@ export const loginSchema = z.object({
 export type LoginFormValues = z.infer<typeof loginSchema>; 
 
 export const signupSchema = z.object({
-  student: z.object({
   studentName: z.string().min(1, "이름을 입력해주세요"),
   studentEmail: z.string()
     .min(1, "이메일을 입력해주세요")
@@ -27,7 +26,6 @@ export const signupSchema = z.object({
   .regex(/^010-\d{4}-\d{4}$/, "010-xxxx-xxxx 형식으로 입력해주세요"),
   academyId: z.string().uuid("유효한 학원 ID가 아닙니다"),
   adsAgreed: z.number().optional()
-  })
 });
 
 

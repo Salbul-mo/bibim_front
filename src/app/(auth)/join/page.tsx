@@ -18,27 +18,28 @@ import { toast } from "sonner";
 import { authClient } from "@/features/auth/api/auth.client";
 import Link from "next/link";
 import { useState } from "react";
+import { z } from "zod";
 
 // 폼 로직만 포함하는 클라이언트 컴포넌트
-export default function SignupForm() {
+export default function JoinForm() {
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState(false);
 
-	const form = useForm<SignupFormValues>({
+	type SignupForm = z.infer<typeof signupSchema>;
+
+	const form = useForm<SignupForm>({
 		resolver: zodResolver(signupSchema),
 		defaultValues: {
-			student: {
-				studentName: "",
-				studentEmail: "",
-				studentPassword: "",
-				studentPhone: "",
-				adsAgreed: 0,
-				academyId: process.env.NEXT_PUBLIC_ACADEMY_ID,
-			},
+			studentName: "",
+			studentEmail: "",
+			studentPassword: "",
+			studentPhone: "",
+			adsAgreed: 0,
+			academyId: process.env.NEXT_PUBLIC_ACADEMY_ID,
 		},
 	});
 
-	const onSubmit = async (data: SignupFormValues) => {
+	const onSubmit = async (data: SignupForm) => {
 		try {
 			setIsLoading(true);
 
@@ -47,7 +48,12 @@ export default function SignupForm() {
 			}
 
 			const response = await authClient.signup({
-				...data,
+				studentName: data.studentName,
+				studentEmail: data.studentEmail,
+				studentPassword: data.studentPassword,
+				studentPhone: data.studentPhone,
+				academyId: process.env.NEXT_PUBLIC_ACADEMY_ID,
+				adsAgreed: data.adsAgreed,
 			});
 
 			toast.success("회원가입이 완료되었습니다");
@@ -77,7 +83,7 @@ export default function SignupForm() {
 					<form onSubmit={form.handleSubmit(onSubmit)} className="w-full max-w-md space-y-6">
 						<FormField
 							control={form.control}
-							name="student.studentName"
+							name="studentName"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>이름</FormLabel>
@@ -91,10 +97,11 @@ export default function SignupForm() {
 
 						<FormField
 							control={form.control}
-							name="student.studentEmail"
+							name="studentEmail"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>이메일</FormLabel>
+
 									<FormControl>
 										<Input {...field} placeholder="이메일을 입력하세요" />
 									</FormControl>
@@ -105,7 +112,7 @@ export default function SignupForm() {
 
 						<FormField
 							control={form.control}
-							name="student.studentPassword"
+							name="studentPassword"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>비밀번호</FormLabel>
@@ -119,7 +126,7 @@ export default function SignupForm() {
 
 						<FormField
 							control={form.control}
-							name="student.studentPhone"
+							name="studentPhone"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>휴대폰 번호</FormLabel>
@@ -133,7 +140,7 @@ export default function SignupForm() {
 
 						<FormField
 							control={form.control}
-							name="student.adsAgreed"
+							name="adsAgreed"
 							render={({ field }) => (
 								<FormItem className="flex items-center space-x-2">
 									<FormControl>
