@@ -33,7 +33,7 @@ function LoginForm() {
 		defaultValues: {
 			email: "front@test.com",
 			password: "wnddkdhta21!",
-			academyId: "f236923c-4746-4b5a-8377-e7c5b53799c2",
+			academyId: process.env.NEXT_PUBLIC_ACADEMY_ID,
 		},
 	});
 
