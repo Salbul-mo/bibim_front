@@ -15,8 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { SignupFormValues, signupSchema } from "@/features/auth/validations/auth";
 import { toast } from "sonner";
-import Cookies from "js-cookie";
 import { useState } from "react";
+import { authClient } from "@/features/auth/api/auth.client";
 import Link from "next/link";
 
 // 폼 로직만 포함하는 클라이언트 컴포넌트
@@ -49,13 +49,7 @@ export function SignupForm() {
 				adsAgreed: data.adsAgreed ? 1 : 0,
 			};
 
-			const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/join`, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(student),
-			});
+			const response = await authClient.signup(student);
 
 			if (!response.ok) {
 				const errorData = await response.json();
@@ -153,7 +147,7 @@ export function SignupForm() {
 											type="checkbox"
 											onChange={field.onChange}
 											className="h-4 w-4"
-											checked={field.value === 1}
+											value={1}
 										/>
 									</FormControl>
 									<FormLabel className="!mt-0">광고 및 마케팅 수신 동의 (선택)</FormLabel>
