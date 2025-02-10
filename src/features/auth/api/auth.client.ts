@@ -1,6 +1,8 @@
 import { Credential } from "@/core/types/auth";
-import { cookies } from "next/headers";
 import { SignupFormValues } from "../validations/auth";
+
+
+
 const handleApiError = (error: unknown) => {
   if (error instanceof Error) throw error;
   throw new Error('Unknown API error occurred');
@@ -46,16 +48,15 @@ export const authClient = {
       throw new Error(error.message || '로그아웃 실패');
     }
 
-
-
     return response.json();
   },
 
-  signup: async (student: SignupFormValues) => {
-    const response = await fetch(`${API_BASE_URL}/api/auth/join`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(student),
+	signup: async (student: SignupFormValues) => {
+		const response = await fetch(`${API_BASE_URL}/api/auth/join`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(student),
+
     });
 
     if (!response.ok) {
