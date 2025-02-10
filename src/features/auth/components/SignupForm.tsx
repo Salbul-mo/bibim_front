@@ -25,6 +25,8 @@ export function SignupForm() {
 	});
 
 	const onSubmit = async (data: SignupFormValues) => {
+		console.log(data);
+
 		try {
 			setIsLoading(true);
 			// 학원 ID 추가
