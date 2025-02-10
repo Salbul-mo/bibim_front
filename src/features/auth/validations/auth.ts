@@ -14,7 +14,7 @@ export const loginSchema = z.object({
 export type LoginFormValues = z.infer<typeof loginSchema>; 
 
 export const signupSchema = z.object({
-  studentName: z.string().min(5, "이름을 입력해주세요"),
+  studentName: z.string().min(1, "이름을 입력해주세요"),
   studentEmail: z.string()
     .min(1, "이메일을 입력해주세요")
     .email("유효한 이메일 형식이 아닙니다"),
