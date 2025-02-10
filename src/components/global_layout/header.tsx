@@ -11,6 +11,7 @@ import { useSafeTheme } from "../utils/theme";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useEffect } from "react";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 export default function Header() {
 	const { theme } = useSafeTheme();
@@ -46,6 +47,14 @@ export default function Header() {
 				await logoutApi(token);
 				await logout();
 			}
+
+			Cookies.remove("refreshToken", {
+				path: "/",
+				// secure: process.env.NODE_ENV === "production",
+				sameSite: "lax",
+				expires: 7,
+				domain: process.env.NODE_ENV === "production" ? ".bibimfront.vercel.app" : "localhost",
+			});
 		} catch (error) {
 			console.error(error);
 		} finally {
