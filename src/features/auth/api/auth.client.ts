@@ -1,4 +1,3 @@
-"use server";
 import { Credential } from "@/core/types/auth";
 import { cookies } from "next/headers";
 const handleApiError = (error: unknown) => {
@@ -45,8 +44,6 @@ export const authClient = {
       const error = await response.json();
       throw new Error(error.message || '로그아웃 실패');
     }
-
-    cookies().delete("refreshToken");
 
 
 
