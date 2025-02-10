@@ -35,15 +35,20 @@ export function SignupForm() {
 				academyId: process.env.NEXT_PUBLIC_ACADEMY_ID as string,
 				adsAgreed: data.adsAgreed ? 1 : 0,
 			};
-			const response = await authClient.signup(student);
-
-			console.log(response);
+			const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/signup`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(student),
+			});
 
 			if (response.status !== 200) {
-				throw new Error(response.data.message || "회원가입에 실패했습니다");
+				const errorData = await response.json();
+				throw new Error(errorData.message || "회원가입에 실패했습니다");
 			}
 
-			router.push("/signin?message=회원가입이 완료되었습니다");
+			router.push("/login?message=회원가입이 완료되었습니다");
 		} catch (error) {
 			console.error(error);
 			alert(error instanceof Error ? error.message : "회원가입에 실패했습니다");

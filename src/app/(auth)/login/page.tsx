@@ -19,7 +19,7 @@ import { authClient } from "@/features/auth/api/auth.client";
 import { useAuthStore } from "@/features/auth/store/auth.store";
 import Cookies from "js-cookie";
 import type { z } from "zod";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 type FormValues = z.infer<typeof loginSchema>;
 
@@ -28,6 +28,7 @@ function LoginForm() {
 	const searchParams = useSearchParams();
 	const { login: storeLogin } = useAuthStore();
 
+	const message = searchParams.get("message");
 	const form = useForm<FormValues>({
 		resolver: zodResolver(loginSchema),
 		defaultValues: {
@@ -57,6 +58,12 @@ function LoginForm() {
 			console.error(error);
 		}
 	};
+
+	useEffect(() => {
+		if (message) {
+			toast.success(message);
+		}
+	}, []);
 
 	return (
 		<div className="min-h-screen flex items-center justify-center p-4">
