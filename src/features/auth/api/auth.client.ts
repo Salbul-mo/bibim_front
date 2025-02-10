@@ -1,3 +1,4 @@
+"use server";
 import { Credential } from "@/core/types/auth";
 import { cookies } from "next/headers";
 const handleApiError = (error: unknown) => {
