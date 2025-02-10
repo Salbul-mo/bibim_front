@@ -70,9 +70,7 @@ export function SignupForm() {
 				</div>
 
 				<form
-					onSubmit={handleSubmit(onSubmit, (errors) => {
-						console.log(errors);
-					})}
+					onSubmit={handleSubmit(onSubmit)}
 					className="mt-8 space-y-6"
 				>
 					<div className="space-y-4">
