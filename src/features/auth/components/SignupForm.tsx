@@ -42,14 +42,10 @@ export function SignupForm() {
 			if (!process.env.NEXT_PUBLIC_ACADEMY_ID) {
 				throw new Error("학원 ID가 설정되지 않았습니다");
 			}
+			console.log("academyId", process.env.NEXT_PUBLIC_ACADEMY_ID);
 
-			const student = {
-				...data,
-				academyId: process.env.NEXT_PUBLIC_ACADEMY_ID,
-				adsAgreed: data.adsAgreed ? 1 : 0,
-			};
 
-			const response = await authClient.signup(student);
+			const response = await authClient.signup(data);
 
 			if (!response.ok) {
 				const errorData = await response.json();
