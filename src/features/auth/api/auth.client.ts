@@ -52,10 +52,9 @@ export const authClient = {
   },
 
 	signup: async (student: SignupFormValues) => {
-		const response = await fetch(`${API_BASE_URL}/api/auth/join`, {
+		const response = await fetch(`${API_BASE_URL}/api/auth/signup`, {
 			method: "POST",
 			headers: { "Content-Type": "application/json", "accept": "application/json"},
-
 
 			body: JSON.stringify({
         academyId: process.env.NEXT_PUBLIC_ACADEMY_ID,
