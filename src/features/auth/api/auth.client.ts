@@ -1,4 +1,5 @@
 import { Credential } from "@/core/types/auth";
+import { cookies } from "next/headers";
 const handleApiError = (error: unknown) => {
   if (error instanceof Error) throw error;
   throw new Error('Unknown API error occurred');
@@ -43,11 +44,8 @@ export const authClient = {
       const error = await response.json();
       throw new Error(error.message || '로그아웃 실패');
     }
-    // 클라이언트 사이드에서는 쿠키를 직접 설정할 수 없으므로 서버 응답에 의존
-    const cookies = response.headers.get('set-cookie');
-    if (cookies) {
-      document.cookie = `refreshToken=; path=/; domain=.bibimfront.vercel.app; expires=Thu,`;
-    }
+
+    cookies().delete("refreshToken");
 
 
 
