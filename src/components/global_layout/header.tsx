@@ -52,7 +52,6 @@ export default function Header() {
 				path: "/",
 				// secure: process.env.NODE_ENV === "production",
 				sameSite: "lax",
-				expires: 7,
 				domain: process.env.NODE_ENV === "production" ? ".bibimfront.vercel.app" : "localhost",
 			});
 		} catch (error) {
