@@ -45,8 +45,8 @@ function LoginForm() {
 			// 리프레시 토큰만 쿠키에 저장
 			Cookies.set("refreshToken", response.refreshToken, {
 				path: "/",
-				// secure: process.env.NODE_ENV === "production",
-				sameSite: "lax",
+				secure: process.env.NODE_ENV === "production",
+				sameSite: "none",
 				expires: 7,
 				domain: process.env.NODE_ENV === "production" ? ".bibimfront.vercel.app" : "localhost",
 			});

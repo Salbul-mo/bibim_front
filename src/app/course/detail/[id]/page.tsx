@@ -147,12 +147,7 @@ export default function CourseDetailPage() {
 										장바구니에 담기
 									</Button>
 								) : (
-									<Button
-										className="w-full md:w-auto"
-										onClick={() => handleAddToCart(courseDetail)}
-									>
-										수강하기
-									</Button>
+									<Button className="w-full md:w-auto">수강하기</Button>
 								)}
 							</div>
 						</div>

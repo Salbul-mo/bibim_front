@@ -50,8 +50,8 @@ export default function Header() {
 
 			Cookies.remove("refreshToken", {
 				path: "/",
-				// secure: process.env.NODE_ENV === "production",
-				sameSite: "lax",
+				secure: process.env.NODE_ENV === "production",
+				sameSite: "none",
 				domain: process.env.NODE_ENV === "production" ? ".bibimfront.vercel.app" : "localhost",
 			});
 		} catch (error) {
