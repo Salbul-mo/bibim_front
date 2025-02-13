@@ -50,22 +50,18 @@ export default function Header() {
         await logout();
       }
 
-      Cookies.remove("refreshToken", {
-        path: "/",
-        // secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        expires: 7,
-        domain:
-          process.env.NODE_ENV === "production"
-            ? ".bibimfront.vercel.app"
-            : "localhost",
-      });
-    } catch (error) {
-      console.error(error);
-    } finally {
-      logout();
-    }
-  };
+			Cookies.remove("refreshToken", {
+				path: "/",
+				// secure: process.env.NODE_ENV === "production",
+				sameSite: "lax",
+				domain: process.env.NODE_ENV === "production" ? ".bibimfront.vercel.app" : "localhost",
+			});
+		} catch (error) {
+			console.error(error);
+		} finally {
+			logout();
+		}
+	};
 
   return (
     <header className='w-full bg-background dark:bg-dark-background border-b h-16 flex items-center fixed top-0 z-50 shadow-sm'>
