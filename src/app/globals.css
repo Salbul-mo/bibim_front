@@ -32,7 +32,7 @@ body {
 /* Sheet 오버라이드 스타일 */
 [data-state="open"] .sheet-content-wrapper {
   transform: translateX(0) !important;
-  box-shadow: -4px 0 16px rgba(0,0,0,0.1);
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
 }
 
 .sheet-content-wrapper {
@@ -134,4 +134,12 @@ body {
 
 .fixed {
   position: fixed !important;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
 }
