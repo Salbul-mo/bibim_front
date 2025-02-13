@@ -32,8 +32,8 @@ function LoginForm() {
 	const form = useForm<FormValues>({
 		resolver: zodResolver(loginSchema),
 		defaultValues: {
-			email: "front@test.com",
-			password: "wnddkdhta21!",
+			email: "",
+			password: "",
 			academyId: process.env.NEXT_PUBLIC_ACADEMY_ID,
 		},
 	});
