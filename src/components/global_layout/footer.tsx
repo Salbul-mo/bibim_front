@@ -34,15 +34,9 @@ export default function Footer() {
 			<div className="space-y-2">
 				<h3 className="font-semibold">Legal</h3>
 				<ul className="space-y-1">
-					<li>
-						<Link href="/policies/terms">이용약관</Link>
-					</li>
-					<li>
-						<Link href="/policies/privacy-policy">개인정보취급방침</Link>
-					</li>
-					<li>
-						<Link href="/policies/refund-policy">취소 및 환불정책</Link>
-					</li>
+					<li>이용약관</li>
+					<li>개인정보취급방침</li>
+					<li>취소 및 환불정책</li>
 				</ul>
 			</div>
 		</footer>

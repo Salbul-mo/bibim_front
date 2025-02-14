@@ -60,7 +60,7 @@ export default function DashboardPage() {
 				></div>
 
 				{/* 전체 너비 컨테이너 */}
-				<div className="relative w-full bg-gray-700 dark:bg-blue-900 mt-[190px]">
+				<div className="relative w-full bg-gray-700 dark:bg-blue-900 mt-[220px]">
 					{/* 내부 컨텐츠 중앙 정렬 컨테이너 */}
 					<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 						<div className="pb-20 pt-10 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-24">
@@ -73,15 +73,16 @@ export default function DashboardPage() {
 									loop: true,
 									skipSnaps: true,
 									containScroll: "trimSnaps",
+									slidesToScroll: 1,
 								}}
-								className="w-full max-w-[500px] mx-auto relative group"
+								className="w-full max-w-[800px] mx-auto relative group"
 							>
-								<CarouselContent className="-ml-1">
+								<CarouselContent>
 									{carouselItems.map((item, index) => (
-										<CarouselItem key={index} className="pl-1 basis-full">
+										<CarouselItem key={index} className="basis-full">
 											<div className="p-1">
 												<Card className="border-0 bg-transparent">
-													<CardContent className="relative aspect-square p-0">
+													<CardContent className="relative aspect-[16/9] p-0">
 														<Image
 															src={item}
 															alt={`강의 샘플 ${index + 1}`}
