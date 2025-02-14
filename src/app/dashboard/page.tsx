@@ -74,7 +74,7 @@ export default function DashboardPage() {
 									skipSnaps: false,
 									containScroll: false,
 								}}
-								className="w-full max-w-[600px] mx-auto relative group"
+								className="w-full max-w-[500px] mx-auto relative group"
 							>
 								<CarouselContent>
 									{carouselItems.map((item, index) => (
@@ -89,9 +89,6 @@ export default function DashboardPage() {
 															className="object-cover rounded-lg"
 															priority={index === 0}
 														/>
-														<div className="absolute inset-0 flex items-center justify-center">
-															<span className="text-8xl font-bold text-white">{index + 1}</span>
-														</div>
 													</CardContent>
 												</Card>
 											</div>
