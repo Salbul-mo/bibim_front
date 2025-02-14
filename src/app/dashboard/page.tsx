@@ -75,9 +75,9 @@ export default function DashboardPage() {
 									containScroll: "trimSnaps",
 									slidesToScroll: 1,
 								}}
-								className="w-full max-w-[500px] mx-auto relative group"
+								className="w-full max-w-[600px] mx-auto relative group"
 							>
-								<div className="w-full max-w-[500px] mx-auto relative group overflow-hidden">
+								<div className="w-full max-w-[600px] mx-auto relative group overflow-hidden">
 									<CarouselContent>
 										{carouselItems.map((item, index) => (
 											<CarouselItem key={index} className="basis-full">
