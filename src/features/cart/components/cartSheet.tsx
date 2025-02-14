@@ -115,11 +115,13 @@ export function CartSheet() {
 			</SheetTrigger>
 			<SheetContent
 				side="right"
-				className="w-full sm:w-[400px] !right-0 z-[60] h-full flex flex-col"
+				className="w-full sm:w-[400px] !right-0 z-[60] h-full flex flex-col bg-background dark:bg-dark-background-foreground"
 			>
-				<SheetHeader className="border-b p-4">
-					<SheetTitle className="text-xl">{user?.email}님의 장바구니</SheetTitle>
-					<SheetDescription className="text-sm">
+				<SheetHeader className="border-b border-gray-200 dark:border-gray-700 p-4">
+					<SheetTitle className="text-xl text-gray-900 dark:text-gray-100">
+						{user?.email}님의 장바구니
+					</SheetTitle>
+					<SheetDescription className="text-sm text-gray-600 dark:text-gray-400">
 						총 {totalCount}개 상품이 담겨있습니다
 					</SheetDescription>
 				</SheetHeader>
@@ -129,30 +131,35 @@ export function CartSheet() {
 						<LoadingSpinner />
 					) : totalCount === 0 ? (
 						<div className="space-y-4 text-center">
-							<ShoppingCart className="mx-auto h-12 w-12 text-muted-foreground" />
-							<p className="text-muted-foreground">장바구니가 비어있습니다</p>
+							<ShoppingCart className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-600" />
+							<p className="text-gray-500 dark:text-gray-400">장바구니가 비어있습니다</p>
 						</div>
 					) : (
 						<CartItemList items={items} />
 					)}
 				</div>
 
-				<SheetFooter className="border-t p-4">
+				<SheetFooter className="border-t border-gray-200 dark:border-gray-700 p-4">
 					<div className="flex flex-row justify-between items-center w-full mb-4">
-						<span className="whitespace-nowrap">총 수량:</span>
-						<span className="font-medium whitespace-nowrap">{totalCount}개</span>
+						<span className="whitespace-nowrap text-gray-700 dark:text-gray-300">총 수량:</span>
+						<span className="font-medium whitespace-nowrap text-gray-900 dark:text-gray-100">
+							{totalCount}개
+						</span>
 					</div>
 					<div className="flex flex-row justify-between items-center w-full">
-						<span className="whitespace-nowrap">총 금액:</span>
+						<span className="whitespace-nowrap text-gray-700 dark:text-gray-300">총 금액:</span>
 						{isLoading ? (
 							<Skeleton className="h-6 w-32" />
 						) : (
-							<span className="font-bold text-primary whitespace-nowrap">
+							<span className="font-bold text-primary dark:text-dark-primary whitespace-nowrap">
 								₩{(totalPrice ?? 0).toLocaleString()}
 							</span>
 						)}
 					</div>
-					<Button className="w-full mt-4" onClick={checkoutHandler}>
+					<Button
+						className="w-full mt-4 bg-primary hover:bg-primary/90 text-white dark:bg-dark-primary dark:hover:bg-dark-primary/90"
+						onClick={checkoutHandler}
+					>
 						결제하기
 					</Button>
 				</SheetFooter>
