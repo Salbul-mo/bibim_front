@@ -1,12 +1,19 @@
-"use client";
-
-import Video from "@/features/course/components/video";
-import ClassList from "@/features/course/components/classList";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import ClassList from "@/features/course/components/classList";
+import Video from "@/features/course/components/video";
+export default function LecturePage() {
+	return (
+		<Suspense fallback={<div>강의 로딩 중...</div>}>
+			<LecturePlayer />
+		</Suspense>
+	);
+}
 
-export default function CourseLecturePage() {
+// 클라이언트 컴포넌트로 분리
+function LecturePlayer() {
 	const searchParams = useSearchParams();
+	const lectureId = searchParams.get("id");
 	const [courseId, setCourseId] = useState("");
 	const [classId, setClassId] = useState("");
 	const [videoPath, setVideoPath] = useState("");
@@ -43,3 +50,4 @@ export default function CourseLecturePage() {
 		</div>
 	);
 }
+
