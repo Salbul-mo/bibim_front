@@ -7,7 +7,6 @@ export const courseClient = {
       headers: {
         Authorization: `${accessToken}`,
       },
-
     });
 
     if (response.status !== 200) {
@@ -19,11 +18,14 @@ export const courseClient = {
   },
 
   getCourseDetail: async (accessToken: string, courseId: string) => {
-    const response = await apiClient.get(`${API_BASE_URL}/api/course/detail?id=${courseId}`, {
-      headers: {
-        Authorization: `${accessToken}`,
-      },
-    });
+    const response = await apiClient.get(
+      `${API_BASE_URL}/api/course/detail?id=${courseId}`,
+      {
+        headers: {
+          Authorization: `${accessToken}`,
+        },
+      }
+    );
     if (response.status !== 200) {
       const message = response.data.message;
       console.error(message);
@@ -33,19 +35,39 @@ export const courseClient = {
   },
 
   getPurchasedCourses: async (accessToken: string) => {
-    const response = await apiClient.get(`${API_BASE_URL}/api/course/purchased`, {
-      headers: {
-        Authorization: `${accessToken}`,
-      },
+    const response = await apiClient.get(
+      `${API_BASE_URL}/api/course/purchased`,
+      {
+        headers: {
+          Authorization: `${accessToken}`,
+        },
+      }
+    );
 
-    });
-    
     if (response.status !== 200) {
       const message = response.data.message;
       console.error(message);
       throw new Error(message);
     }
     return response.data;
-  }
-};
+  },
 
+  getClassDetail: async (accessToken: string, classId: string) => {
+    const response = await apiClient.get(
+      `${API_BASE_URL}/api/course/classDetail?id=${classId}`,
+      {
+        headers: {
+          Authorization: `${accessToken}`,
+        },
+      }
+    );
+
+    if (response.status !== 200) {
+      const message = response.data.message;
+      console.error(message);
+      throw new Error(message);
+    }
+
+    return response.data;
+  },
+};
