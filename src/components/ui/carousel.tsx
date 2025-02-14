@@ -197,7 +197,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
 				{...props}
 			>
 				<ArrowLeft className="tw-h-4 tw-w-4" />
-				<span className="tw-sr-only">Previous slide</span>
+				<span className="tw-sr-only"></span>
 			</Button>
 		);
 	}
@@ -225,7 +225,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
 				{...props}
 			>
 				<ArrowRight className="tw-h-4 tw-w-4" />
-				<span className="tw-sr-only">Next slide</span>
+				<span className="tw-sr-only"></span>
 			</Button>
 		);
 	}
