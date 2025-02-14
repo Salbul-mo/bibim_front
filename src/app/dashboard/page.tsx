@@ -68,11 +68,6 @@ export default function DashboardPage() {
 								개설된 강의
 							</h2>
 							<Carousel
-								opts={{
-									loop: true,
-									dragFree: true,
-									containScroll: "trimSnaps",
-								}}
 								className="w-full max-w-[90%] mx-auto relative group"
 							>
 								<CarouselContent>
