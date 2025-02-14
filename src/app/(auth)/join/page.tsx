@@ -68,8 +68,8 @@ export default function JoinForm() {
 	};
 
 	return (
-		<div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-700 px-4">
-			<div className="max-w-md w-full space-y-8 p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+		<div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-background dark:bg-dark-background">
+			<div className="w-full max-w-md p-8 bg-background dark:bg-dark-background-foreground rounded-lg shadow-lg space-y-6">
 				<div className="text-center">
 					<h2 className="text-3xl font-bold text-gray-900 dark:text-white">회원가입</h2>
 					<p className="mt-2 text-sm text-gray-600 dark:text-gray-400">

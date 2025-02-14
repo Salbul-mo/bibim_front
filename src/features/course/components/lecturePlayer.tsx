@@ -17,7 +17,7 @@ export default function LecturePlayer() {
 	};
 
 	return (
-		<div className="min-h-screen pt-12 bg-background dark:bg-dark-background">
+		<div className="min-h-[calc(100vh-4rem)] pt-12 bg-background dark:bg-dark-background">
 			<main className="container mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6">
 				{/* 강의 리스트 */}
 				<aside className="lg:w-1/3 bg-background dark:bg-dark-background-foreground rounded-lg shadow-lg p-4 lg:h-screen overflow-hidden h-full">

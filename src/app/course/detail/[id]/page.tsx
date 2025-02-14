@@ -87,7 +87,7 @@ export default function CourseDetailPage() {
 	return (
 		<>
 			<Toaster richColors position="top-center" />
-			<div className="container mx-auto px-4 pt-24 pb-12">
+			<div className="min-h-[calc(100vh-4rem)] container mx-auto px-4 pt-24 pb-12">
 				<div className="max-w-5xl mx-auto">
 					{/* 강의 기본 정보 */}
 					<div className="bg-background dark:bg-dark-background-foreground rounded-lg shadow-md overflow-hidden mb-8">

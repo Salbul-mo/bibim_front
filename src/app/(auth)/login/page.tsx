@@ -67,8 +67,8 @@ function LoginForm() {
 	}, []);
 
 	return (
-		<div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-gray-100 dark:from-dark-background dark:to-gray-900">
-			<div className="w-full max-w-md p-8 bg-white dark:bg-dark-background-foreground rounded-lg shadow-lg space-y-6">
+		<div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-background dark:bg-dark-background">
+			<div className="w-full max-w-md p-8 bg-background dark:bg-dark-background-foreground rounded-lg shadow-lg space-y-6">
 				<div className="text-center mb-8">
 					<div className="flex justify-center mb-6">
 						<Image

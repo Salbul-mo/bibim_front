@@ -100,26 +100,26 @@ export default function DashboardPage() {
 												<div className="p-1">
 													<Card className="border-0 bg-transparent">
 														<CardContent className="relative aspect-[16/9] p-0">
-															<div className="absolute top-4 left-4 bg-black/50 px-3 py-1.5 rounded-full text-white dark:text-gray-200 font-medium text-sm">
-																{item.courseName}
-															</div>
 															<Image
 																src={item.src}
 																alt={`강의 샘플 ${index + 1}`}
 																fill
-																className="object-cover rounded-lg"
+																className="object-cover rounded-t-lg"
 																priority={index === 0}
 															/>
-															<div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent rounded-b-lg">
-																<p className="text-white dark:text-gray-200 text-sm mb-2">
-																	{item.courseInfo}
-																</p>
-																<div className="absolute bottom-4 right-4 bg-white/80 dark:bg-gray-800/80 px-2 py-1 rounded-full text-sm text-gray-800 dark:text-gray-200">
-																	{index + 1} / {carouselItems.length}
-																</div>
+															<div className="absolute bottom-4 right-4 bg-white/80 dark:bg-gray-800/80 px-2 py-1 rounded-full text-sm text-gray-800 dark:text-gray-200">
+																{index + 1} / {carouselItems.length}
 															</div>
 														</CardContent>
 													</Card>
+												</div>
+												<div className="p-4 bg-white dark:bg-gray-800 rounded-b-lg">
+													<h3 className="font-medium text-lg text-gray-900 dark:text-gray-100 mb-2">
+														{item.courseName}
+													</h3>
+													<p className="text-gray-600 dark:text-gray-400 text-sm">
+														{item.courseInfo}
+													</p>
 												</div>
 											</CarouselItem>
 										))}
