@@ -70,13 +70,13 @@ export default function DashboardPage() {
 									align: "start",
 									loop: true,
 								}}
-								className="w-full max-w-[90%] mx-auto"
+								className="w-full max-w-[90%] mx-auto relative group"
 							>
 								<CarouselContent>
 									{carouselItems.map((item, index) => (
 										<CarouselItem
 											key={index}
-											className="basis-[95%] sm:basis-[45%] md:basis-[35%] lg:basis-[30%]"
+											className="basis-[95%] sm:basis-[45%] md:basis-[35%] lg:basis-[30%] transition-transform duration-300"
 										>
 											<div className="p-1">
 												<Card>
@@ -94,8 +94,8 @@ export default function DashboardPage() {
 										</CarouselItem>
 									))}
 								</CarouselContent>
-								<CarouselPrevious />
-								<CarouselNext />
+								<CarouselPrevious className="opacity-0 group-hover:opacity-70 transition-opacity absolute -left-12 bg-white/70 hover:bg-white/90 dark:bg-gray-800/70 dark:hover:bg-gray-800/90" />
+								<CarouselNext className="opacity-0 group-hover:opacity-70 transition-opacity absolute -right-12 bg-white/70 hover:bg-white/90 dark:bg-gray-800/70 dark:hover:bg-gray-800/90" />
 							</Carousel>
 						</div>
 					</div>
