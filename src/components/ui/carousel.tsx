@@ -143,8 +143,8 @@ const CarouselContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
 				<div
 					ref={ref}
 					className={cn(
-						"tw-flex",
-						orientation === "horizontal" ? "tw--ml-4" : "tw--mt-4 tw-flex-col",
+						"flex",
+						orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
 						className
 					)}
 					{...props}
@@ -165,8 +165,8 @@ const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
 				role="group"
 				aria-roledescription="slide"
 				className={cn(
-					"tw-min-w-0 tw-shrink-0 tw-grow-0 tw-basis-full",
-					orientation === "horizontal" ? "tw-pl-4" : "tw-pt-4",
+					"min-w-0 shrink-0 grow-0 basis-full",
+					orientation === "horizontal" ? "pl-4" : "pt-4",
 					className
 				)}
 				{...props}
@@ -186,10 +186,10 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
 				variant={variant}
 				size={size}
 				className={cn(
-					"tw-absolute tw- tw-h-8 tw-w-8 tw-rounded-full",
+					"absolute h-8 w-8 rounded-full",
 					orientation === "horizontal"
-						? "tw--left-12 tw-top-1/2 tw--translate-y-1/2"
-						: "tw--top-12 tw-left-1/2 tw--translate-x-1/2 tw-rotate-90",
+						? "-left-12 top-1/2 -translate-y-1/2"
+						: "-top-12 left-1/2 -translate-x-1/2 rotate-90",
 					className
 				)}
 				disabled={!canScrollPrev}
@@ -214,10 +214,10 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
 				variant={variant}
 				size={size}
 				className={cn(
-					"tw-absolute tw-h-8 tw-w-8 tw-rounded-full",
+					"absolute h-8 w-8 rounded-full",
 					orientation === "horizontal"
-						? "tw--right-12 tw-top-1/2 tw--translate-y-1/2"
-						: "tw--bottom-12 tw-left-1/2 tw--translate-x-1/2 tw-rotate-90",
+						? "-right-12 top-1/2 -translate-y-1/2"
+						: "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
 					className
 				)}
 				disabled={!canScrollNext}

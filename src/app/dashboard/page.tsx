@@ -60,21 +60,24 @@ export default function DashboardPage() {
 				></div>
 
 				<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-					<Carousel className="w-full max-w-4xl mx-auto">
-						<CarouselContent className="-ml-2 md:-ml-4">
+					<h2 className="text-2xl font-bold text-center mb-8">개설된 강의</h2>
+					<Carousel
+						opts={{
+							align: "start",
+							loop: true,
+						}}
+						className="w-full max-w-5xl mx-auto"
+					>
+						<CarouselContent>
 							{carouselItems.map((item, index) => (
-								<CarouselItem
-									key={index}
-									className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3"
-								>
-									<div className="relative aspect-[4/3]">
-										<Card className="border-0">
-											<CardContent className="p-0">
+								<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+									<div className="p-1">
+										<Card>
+											<CardContent className="relative aspect-[4/3] p-0">
 												<Image
 													src={item}
 													alt={`강의 샘플 ${index + 1}`}
 													fill
-													sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 													className="object-cover rounded-lg"
 													priority={index === 0}
 												/>
@@ -84,9 +87,9 @@ export default function DashboardPage() {
 								</CarouselItem>
 							))}
 						</CarouselContent>
-						<div className="flex items-center justify-center gap-2 mt-4">
-							<CarouselPrevious className="static translate-x-0" />
-							<CarouselNext className="static translate-x-0" />
+						<div className="flex justify-end gap-2 mt-4">
+							<CarouselPrevious className="static" />
+							<CarouselNext className="static" />
 						</div>
 					</Carousel>
 				</div>
