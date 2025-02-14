@@ -65,17 +65,17 @@ export default function DashboardPage() {
 					</h6>
 					{/* 내부 컨텐츠 중앙 정렬 컨테이너 */}
 					<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-						<div className="pb-20 pt-10 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-24">
+						<div className="pb-20 pt-10">
 							<Carousel>
 								<CarouselContent>
-									{carouselItems.map((item) => (
-										<CarouselItem key={item}>
+									{carouselItems.map((item, index) => (
+										<CarouselItem key={index}>
 											<div className="relative w-full h-64 md:h-96">
 												<Image
 													src={item}
-													alt="과정 샘플"
-													width={650}
-													height={650}
+													alt={`강의 샘플 ${index + 1}`}
+													fill
+													sizes="(max-width: 768px) 100vw, 80vw"
 													className="object-cover rounded-lg"
 												/>
 											</div>
