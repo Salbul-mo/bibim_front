@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Cookies from "js-cookie";
 
+
 export default function Header() {
 	const { theme } = useSafeTheme();
 	const [mounted, setMounted] = useState(false);

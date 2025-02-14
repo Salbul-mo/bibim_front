@@ -59,38 +59,36 @@ export default function DashboardPage() {
 					}}
 				></div>
 
-				{/* 전체 너비 컨테이너 */}
-				<div className="relative w-full bg-gray-700 dark:bg-blue-900 mt-[276px]">
-					<h6 className="text-center text-2xl font-bold text-text dark:text-dark-text">
-						개설된 강의
-					</h6>
-					{/* 내부 컨텐츠 중앙 정렬 컨테이너 */}
-					<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-						<Carousel className="w-full max-w-xs	">
-							<CarouselContent>
-								{carouselItems.map((item, index) => (
-									<CarouselItem key={index}>
-										<div className="relative w-full h-64 md:h-96">
-											<Card>
-												<CardContent className="flex aspect-square items-center justify-center p-6">
-													<Image
-														src={item}
-														alt={`강의 샘플 ${index + 1}`}
-														fill
-														sizes="(max-width: 768px) 100vw, 80vw"
-														className="object-cover rounded-lg"
-													/>
-												</CardContent>
-											</Card>
-										</div>
-									</CarouselItem>
-								))}
-							</CarouselContent>
-							{/* 네비게이션 버튼 */}
-							<CarouselPrevious />
-							<CarouselNext />
-						</Carousel>
-					</div>
+				<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+					<Carousel className="w-full max-w-4xl mx-auto">
+						<CarouselContent className="-ml-2 md:-ml-4">
+							{carouselItems.map((item, index) => (
+								<CarouselItem
+									key={index}
+									className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3"
+								>
+									<div className="relative aspect-[4/3]">
+										<Card className="border-0">
+											<CardContent className="p-0">
+												<Image
+													src={item}
+													alt={`강의 샘플 ${index + 1}`}
+													fill
+													sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+													className="object-cover rounded-lg"
+													priority={index === 0}
+												/>
+											</CardContent>
+										</Card>
+									</div>
+								</CarouselItem>
+							))}
+						</CarouselContent>
+						<div className="flex items-center justify-center gap-2 mt-4">
+							<CarouselPrevious className="static translate-x-0" />
+							<CarouselNext className="static translate-x-0" />
+						</div>
+					</Carousel>
 				</div>
 			</div>
 		</div>
