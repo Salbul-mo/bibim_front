@@ -75,30 +75,32 @@ export default function DashboardPage() {
 									containScroll: "trimSnaps",
 									slidesToScroll: 1,
 								}}
-								className="w-full max-w-[800px] mx-auto relative group"
+								className="w-full max-w-[500px] mx-auto relative group"
 							>
-								<CarouselContent>
-									{carouselItems.map((item, index) => (
-										<CarouselItem key={index} className="basis-full">
-											<div className="p-1">
-												<Card className="border-0 bg-transparent">
-													<CardContent className="relative aspect-[16/9] p-0">
-														<Image
-															src={item}
-															alt={`강의 샘플 ${index + 1}`}
-															fill
-															className="object-cover rounded-lg"
-															priority={index === 0}
-														/>
-														<div className="absolute bottom-4 right-4 bg-white/80 px-2 py-1 rounded-full">
-															{index + 1} / {carouselItems.length}
-														</div>
-													</CardContent>
-												</Card>
-											</div>
-										</CarouselItem>
-									))}
-								</CarouselContent>
+								<div className="w-full max-w-[500px] mx-auto relative group overflow-hidden">
+									<CarouselContent>
+										{carouselItems.map((item, index) => (
+											<CarouselItem key={index} className="basis-full">
+												<div className="p-1">
+													<Card className="border-0 bg-transparent">
+														<CardContent className="relative aspect-[16/9] p-0">
+															<Image
+																src={item}
+																alt={`강의 샘플 ${index + 1}`}
+																fill
+																className="object-cover rounded-lg"
+																priority={index === 0}
+															/>
+															<div className="absolute bottom-4 right-4 bg-white/80 px-2 py-1 rounded-full">
+																{index + 1} / {carouselItems.length}
+															</div>
+														</CardContent>
+													</Card>
+												</div>
+											</CarouselItem>
+										))}
+									</CarouselContent>
+								</div>
 								<CarouselPrevious className="w-10 h-10 -left-12 opacity-70 hover:opacity-100 bg-white/70 hover:bg-white" />
 								<CarouselNext className="w-10 h-10 -right-12 opacity-70 hover:opacity-100 bg-white/70 hover:bg-white" />
 							</Carousel>
