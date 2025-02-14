@@ -94,10 +94,8 @@ export default function DashboardPage() {
 										</CarouselItem>
 									))}
 								</CarouselContent>
-								<div className="flex justify-end gap-2 mt-4">
-									<CarouselPrevious />
-									<CarouselNext />
-								</div>
+								<CarouselPrevious />
+								<CarouselNext />
 							</Carousel>
 						</div>
 					</div>
