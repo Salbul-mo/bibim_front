@@ -64,11 +64,14 @@ export default function DashboardPage() {
 					{/* 내부 컨텐츠 중앙 정렬 컨테이너 */}
 					<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 						<div className="pb-20 pt-10 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-24">
-							<h2 className="text-2xl font-bold text-center mb-8">개설된 강의</h2>
+							<h2 className="text-2xl font-bold text-center text-gray-200 dark:text-gray-300 mb-8">
+								개설된 강의
+							</h2>
 							<Carousel
 								opts={{
-									align: "start",
 									loop: true,
+									dragFree: true,
+									containScroll: "trimSnaps",
 								}}
 								className="w-full max-w-[90%] mx-auto relative group"
 							>
