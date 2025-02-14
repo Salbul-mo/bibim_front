@@ -1,8 +1,23 @@
 "use client";
 
+import {
+	Carousel,
+	CarouselItem,
+	CarouselContent,
+	CarouselNext,
+	CarouselPrevious,
+} from "@/components/ui/carousel";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function DashboardPage() {
+	const carouselItems = [
+		"/images/index/coursesample.png",
+		"/images/index/courseSample1.jpg",
+		"/images/index/courseSample2.jpg",
+		"/images/index/courseSample3.jpg",
+	];
+
 	return (
 		<div>
 			{/* 메인 컨텐츠 */}
@@ -45,9 +60,36 @@ export default function DashboardPage() {
 
 				{/* 전체 너비 컨테이너 */}
 				<div className="relative w-full bg-gray-700 dark:bg-blue-900 mt-[276px]">
+					<h6 className="text-center text-2xl font-bold text-text dark:text-dark-text">
+						개설된 강의
+					</h6>
 					{/* 내부 컨텐츠 중앙 정렬 컨테이너 */}
 					<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-						<div className="pb-20 pt-10 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-24"></div>
+						<div className="pb-20 pt-10 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-24">
+							<Carousel>
+								<CarouselContent>
+									{carouselItems.map((item) => (
+										<CarouselItem key={item}>
+											<div className="relative w-full h-64 md:h-96">
+												<Image
+													src={item}
+													alt="과정 샘플"
+													fill
+													sizes="(max-width: 768px) 100vw, 50vw"
+													className="object-cover rounded-lg"
+												/>
+											</div>
+										</CarouselItem>
+									))}
+								</CarouselContent>
+
+								{/* 네비게이션 버튼 */}
+								<div className="flex justify-center gap-2 mt-4">
+									<CarouselPrevious className="static translate-x-0" />
+									<CarouselNext className="static translate-x-0" />
+								</div>
+							</Carousel>
+						</div>
 					</div>
 				</div>
 
