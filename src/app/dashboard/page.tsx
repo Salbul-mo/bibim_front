@@ -74,9 +74,9 @@ export default function DashboardPage() {
 									skipSnaps: false,
 									containScroll: false,
 								}}
-								className="w-full max-w-[500px] mx-auto relative group overflow-hidden"
+								className="w-full max-w-[500px] mx-auto relative group"
 							>
-								<CarouselContent>
+								<CarouselContent className="overflow-hidden">
 									{carouselItems.map((item, index) => (
 										<CarouselItem key={index} className="basis-full">
 											<div className="p-1">
@@ -95,9 +95,9 @@ export default function DashboardPage() {
 										</CarouselItem>
 									))}
 								</CarouselContent>
+								<CarouselPrevious className="w-10 h-10 -left-12 opacity-70 hover:opacity-100 bg-white/70 hover:bg-white" />
+								<CarouselNext className="w-10 h-10 -right-12 opacity-70 hover:opacity-100 bg-white/70 hover:bg-white" />
 							</Carousel>
-							<CarouselPrevious className="w-10 h-10 -left-12 opacity-70 hover:opacity-100 bg-white/70 hover:bg-white" />
-							<CarouselNext className="w-10 h-10 -right-12 opacity-70 hover:opacity-100 bg-white/70 hover:bg-white" />
 						</div>
 					</div>
 				</div>
