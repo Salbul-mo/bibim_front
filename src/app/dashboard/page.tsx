@@ -59,39 +59,45 @@ export default function DashboardPage() {
 					}}
 				></div>
 
-				<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-					<h2 className="text-2xl font-bold text-center mb-8">개설된 강의</h2>
-					<Carousel
-						opts={{
-							align: "start",
-							loop: true,
-						}}
-						className="w-full max-w-5xl mx-auto"
-					>
-						<CarouselContent>
-							{carouselItems.map((item, index) => (
-								<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-									<div className="p-1">
-										<Card>
-											<CardContent className="relative aspect-[4/3] p-0">
-												<Image
-													src={item}
-													alt={`강의 샘플 ${index + 1}`}
-													fill
-													className="object-cover rounded-lg"
-													priority={index === 0}
-												/>
-											</CardContent>
-										</Card>
-									</div>
-								</CarouselItem>
-							))}
-						</CarouselContent>
-						<div className="flex justify-end gap-2 mt-4">
-							<CarouselPrevious className="static" />
-							<CarouselNext className="static" />
+				{/* 전체 너비 컨테이너 */}
+				<div className="relative w-full bg-gray-700 dark:bg-blue-900 mt-[276px]">
+					{/* 내부 컨텐츠 중앙 정렬 컨테이너 */}
+					<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+						<div className="pb-20 pt-10 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-24">
+							<h2 className="text-2xl font-bold text-center mb-8">개설된 강의</h2>
+							<Carousel
+								opts={{
+									align: "start",
+									loop: true,
+								}}
+								className="w-full max-w-5xl mx-auto"
+							>
+								<CarouselContent>
+									{carouselItems.map((item, index) => (
+										<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+											<div className="p-1">
+												<Card>
+													<CardContent className="relative aspect-[4/3] p-0">
+														<Image
+															src={item}
+															alt={`강의 샘플 ${index + 1}`}
+															fill
+															className="object-cover rounded-lg"
+															priority={index === 0}
+														/>
+													</CardContent>
+												</Card>
+											</div>
+										</CarouselItem>
+									))}
+								</CarouselContent>
+								<div className="flex justify-end gap-2 mt-4">
+									<CarouselPrevious className="static" />
+									<CarouselNext className="static" />
+								</div>
+							</Carousel>
 						</div>
-					</Carousel>
+					</div>
 				</div>
 			</div>
 		</div>
