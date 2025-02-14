@@ -13,7 +13,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Cookies from "js-cookie";
 
-
 export default function Header() {
 	const { theme } = useSafeTheme();
 	const [mounted, setMounted] = useState(false);
@@ -43,18 +42,18 @@ export default function Header() {
 
 	const handleLogout = async () => {
 		try {
-			const token = tokens?.accessToken;
-			if (token) {
-				await logoutApi(token);
-				await logout();
-			}
-
 			Cookies.remove("refreshToken", {
 				path: "/",
 				secure: process.env.NODE_ENV === "production",
 				sameSite: "none",
 				domain: process.env.NODE_ENV === "production" ? ".bibimfront.vercel.app" : "localhost",
 			});
+
+			const token = tokens?.accessToken;
+			if (token) {
+				await logoutApi(token);
+				await logout();
+			}
 		} catch (error) {
 			console.error(error);
 		} finally {
