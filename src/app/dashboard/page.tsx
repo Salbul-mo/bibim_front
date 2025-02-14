@@ -60,7 +60,7 @@ export default function DashboardPage() {
 				></div>
 
 				{/* 전체 너비 컨테이너 */}
-				<div className="relative w-full bg-gray-700 dark:bg-blue-900 mt-[276px]">
+				<div className="relative w-full bg-gray-700 dark:bg-blue-900 mt-[190px]">
 					{/* 내부 컨텐츠 중앙 정렬 컨테이너 */}
 					<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 						<div className="pb-20 pt-10 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-24">
@@ -76,7 +76,7 @@ export default function DashboardPage() {
 								}}
 								className="w-full max-w-[500px] mx-auto relative group"
 							>
-								<CarouselContent className="overflow-hidden">
+								<CarouselContent>
 									{carouselItems.map((item, index) => (
 										<CarouselItem key={index} className="basis-full">
 											<div className="p-1">
