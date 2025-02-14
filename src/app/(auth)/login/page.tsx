@@ -67,6 +67,9 @@ function LoginForm() {
 
 	return (
 		<div className="min-h-screen flex items-center justify-center p-4 bg-gray-200 dark:bg-gray-900 text-text dark:text-text">
+			<div className="w-full max-w-md space-y-6">
+				<h3 className="text-2xl font-bold text-text dark:text-dark-text">로그인</h3>
+			</div>
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)} className="w-full max-w-md space-y-6">
 					<FormField
