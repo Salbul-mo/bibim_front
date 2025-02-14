@@ -19,7 +19,8 @@ import { authClient } from "@/features/auth/api/auth.client";
 import { useAuthStore } from "@/features/auth/store/auth.store";
 import Cookies from "js-cookie";
 import type { z } from "zod";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect } from "react";
+import Image from "next/image";
 
 type FormValues = z.infer<typeof loginSchema>;
 
@@ -66,49 +67,78 @@ function LoginForm() {
 	}, []);
 
 	return (
-		<div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray-200 dark:bg-gray-900 text-text dark:text-text">
-			<div className="w-full max-w-md space-y-6">
-				<h3 className="text-2xl font-bold text-text dark:text-dark-text">로그인</h3>
+		<div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-gray-100 dark:from-dark-background dark:to-gray-900">
+			<div className="w-full max-w-md p-8 bg-white dark:bg-dark-background-foreground rounded-lg shadow-lg space-y-6">
+				<div className="text-center mb-8">
+					<div className="flex justify-center mb-6">
+						<Image
+							src="/images/logo_black.jpg"
+							alt="Logo"
+							width={150}
+							height={150}
+							className="dark:hidden"
+						/>
+						<Image
+							src="/images/logo_gray.png"
+							alt="Logo"
+							width={150}
+							height={150}
+							className="hidden dark:block"
+						/>
+					</div>
+					<h1 className="text-2xl font-bold text-text dark:text-dark-text">로그인</h1>
+					<p className="text-gray-600 dark:text-gray-400 mt-2">계정에 로그인하세요</p>
+				</div>
+
+				<Form {...form}>
+					<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+						<FormField
+							control={form.control}
+							name="email"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel className="text-gray-700 dark:text-gray-300">이메일</FormLabel>
+									<FormControl>
+										<Input
+											{...field}
+											placeholder="이메일을 입력하세요"
+											className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+
+						<FormField
+							control={form.control}
+							name="password"
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel className="text-gray-700 dark:text-gray-300">비밀번호</FormLabel>
+									<FormControl>
+										<Input
+											{...field}
+											type="password"
+											placeholder="비밀번호를 입력하세요"
+											className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+
+						<Button
+							type="submit"
+							className="w-full bg-primary hover:bg-primary/90 text-white dark:bg-primary dark:hover:bg-primary/90"
+							disabled={form.formState.isSubmitting}
+						>
+							{form.formState.isSubmitting ? "처리 중..." : "로그인"}
+						</Button>
+					</form>
+				</Form>
 			</div>
-			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)} className="w-full max-w-md space-y-6">
-					<FormField
-						control={form.control}
-						name="email"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>이메일</FormLabel>
-								<FormControl>
-									<Input {...field} placeholder="이메일을 입력하세요" />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-
-					<FormField
-						control={form.control}
-						name="password"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>비밀번호</FormLabel>
-								<FormControl>
-									<Input {...field} type="password" placeholder="비밀번호를 입력하세요" />
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-
-					<Button
-						type="submit"
-						className="w-full bg-gray-300 text-text dark:bg-gray-200 dark:text-white hover:bg-gray-400 dark:hover:bg-gray-300"
-						disabled={form.formState.isSubmitting}
-					>
-						{form.formState.isSubmitting ? "처리 중..." : "로그인"}
-					</Button>
-				</form>
-			</Form>
 		</div>
 	);
 }
