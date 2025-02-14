@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 
 export const defaultMetadata: Metadata = {
   title: {
-    template: "%s | EduPlatform",
-    default: "EduPlatform",
+    template: "%s | CodeCraft",
+    default: "CodeCraft",
   },
-  description: "Education Management System",
+  description: "CodeCraft",
   keywords: ["교육 관리", "학습 플랫폼", "온라인 교육"],
-  authors: [{ name: "EduTeam", url: "https://eduplatform.com" }],
+  authors: [{ name: "JungAngBibim", url: "https://bibimfront.vercel.app/" }],
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://eduplatform.com",
-    siteName: "EduPlatform",
+    url: "https://bibimfront.vercel.app/",
+    siteName: "CodeCraft",
     images: [
       {
         url: "/og-image.png",
@@ -23,8 +23,8 @@ export const defaultMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "EduPlatform",
-    description: "Education Management System",
+    title: "CodeCraft",
+    description: "CodeCraft",
     images: ["/og-image.png"],
   },
   icons: {
