@@ -113,7 +113,7 @@ export default function DashboardPage() {
 														</CardContent>
 													</Card>
 												</div>
-												<div className="p-4 w-[592.02px] bg-white dark:bg-gray-800 rounded-b-lg">
+												<div className="p-4 bg-white dark:bg-gray-800 rounded-b-lg mx-1">
 													<h3 className="font-medium text-lg text-gray-900 dark:text-gray-100 mb-2">
 														{item.courseName}
 													</h3>
