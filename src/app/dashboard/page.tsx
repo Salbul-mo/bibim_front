@@ -74,7 +74,7 @@ export default function DashboardPage() {
 									skipSnaps: false,
 									containScroll: false,
 								}}
-								className="w-full max-w-[500px] mx-auto relative group"
+								className="w-full max-w-[500px] mx-auto relative group overflow-hidden"
 							>
 								<CarouselContent>
 									{carouselItems.map((item, index) => (
