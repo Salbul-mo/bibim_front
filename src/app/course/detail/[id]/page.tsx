@@ -11,6 +11,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast, Toaster } from "sonner";
+import Link from "next/link";
 
 export default function CourseDetailPage() {
 	const { id } = useParams();
@@ -147,7 +148,9 @@ export default function CourseDetailPage() {
 										장바구니에 담기
 									</Button>
 								) : (
-									<Button className="w-full md:w-auto">수강하기</Button>
+									<Link href={`/course/lecture?courseId=${id}`}>
+										<Button className="w-full md:w-auto">수강하기</Button>
+									</Link>
 								)}
 							</div>
 						</div>

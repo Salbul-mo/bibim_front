@@ -8,17 +8,9 @@ import Video from "@/features/course/components/video";
 // 클라이언트 컴포넌트로 분리
 export default function LecturePlayer() {
 	const searchParams = useSearchParams();
-	const lectureId = searchParams.get("id");
-	const [courseId, setCourseId] = useState("");
+	const courseId = searchParams.get("courseId");
 	const [classId, setClassId] = useState("");
 	const [videoPath, setVideoPath] = useState("");
-
-	useEffect(() => {
-		const id = searchParams.get("courseId");
-		if (id) {
-			setCourseId(id || "");
-		}
-	}, [searchParams]);
 
 	const setDisplayVideoPath = (classId: string) => {
 		setClassId(classId);
@@ -30,7 +22,7 @@ export default function LecturePlayer() {
 				{/* 강의 리스트 */}
 				<aside className="lg:w-1/3 bg-white rounded-lg shadow-lg p-4 lg:h-screen overflow-hidden h-full">
 					<ClassList
-						courseId={courseId}
+						courseId={courseId || ""}
 						videoPath={videoPath}
 						setVideoPath={setVideoPath}
 						setDisplayVideoPath={setDisplayVideoPath}
@@ -42,6 +34,7 @@ export default function LecturePlayer() {
 					<Video classId={classId} />
 				</section>
 			</main>
+			<p>현재 강의 ID: {courseId}</p>
 		</div>
 	);
 }
