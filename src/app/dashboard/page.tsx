@@ -14,9 +14,9 @@ import { Card, CardContent } from "@/components/ui/card";
 export default function DashboardPage() {
 	const carouselItems = [
 		"/images/index/coursesample.png",
-		"/images/index/courseSample1.jpg",
-		"/images/index/courseSample2.jpg",
-		"/images/index/courseSample3.jpg",
+		"/images/index/courseSample-one.jpg",
+		"/images/index/courseSample-two.jpg",
+		"/images/index/courseSample-three.jpg",
 	];
 
 	return (
@@ -70,11 +70,14 @@ export default function DashboardPage() {
 									align: "start",
 									loop: true,
 								}}
-								className="w-full max-w-5xl mx-auto"
+								className="w-full max-w-[90%] mx-auto"
 							>
 								<CarouselContent>
 									{carouselItems.map((item, index) => (
-										<CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+										<CarouselItem
+											key={index}
+											className="basis-[95%] sm:basis-[45%] md:basis-[35%] lg:basis-[30%]"
+										>
 											<div className="p-1">
 												<Card>
 													<CardContent className="relative aspect-[4/3] p-0">
@@ -92,8 +95,8 @@ export default function DashboardPage() {
 									))}
 								</CarouselContent>
 								<div className="flex justify-end gap-2 mt-4">
-									<CarouselPrevious className="static" />
-									<CarouselNext className="static" />
+									<CarouselPrevious />
+									<CarouselNext />
 								</div>
 							</Carousel>
 						</div>
