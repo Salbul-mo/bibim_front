@@ -68,17 +68,20 @@ export default function DashboardPage() {
 								개설된 강의
 							</h2>
 							<Carousel
-								className="w-full max-w-[90%] mx-auto relative group"
+								opts={{
+									align: "center",
+									loop: true,
+									skipSnaps: false,
+									containScroll: false,
+								}}
+								className="w-full max-w-[600px] mx-auto relative group"
 							>
 								<CarouselContent>
 									{carouselItems.map((item, index) => (
-										<CarouselItem
-											key={index}
-											className="basis-[95%] sm:basis-[45%] md:basis-[35%] lg:basis-[30%] transition-transform duration-300"
-										>
+										<CarouselItem key={index} className="basis-full">
 											<div className="p-1">
-												<Card>
-													<CardContent className="relative aspect-[4/3] p-0">
+												<Card className="border-0 bg-transparent">
+													<CardContent className="relative aspect-square p-0">
 														<Image
 															src={item}
 															alt={`강의 샘플 ${index + 1}`}
@@ -86,14 +89,17 @@ export default function DashboardPage() {
 															className="object-cover rounded-lg"
 															priority={index === 0}
 														/>
+														<div className="absolute inset-0 flex items-center justify-center">
+															<span className="text-8xl font-bold text-white">{index + 1}</span>
+														</div>
 													</CardContent>
 												</Card>
 											</div>
 										</CarouselItem>
 									))}
 								</CarouselContent>
-								<CarouselPrevious className="opacity-0 group-hover:opacity-70 transition-opacity absolute -left-12 bg-white/70 hover:bg-white/90 dark:bg-gray-800/70 dark:hover:bg-gray-800/90" />
-								<CarouselNext className="opacity-0 group-hover:opacity-70 transition-opacity absolute -right-12 bg-white/70 hover:bg-white/90 dark:bg-gray-800/70 dark:hover:bg-gray-800/90" />
+								<CarouselPrevious className="w-10 h-10 -left-12 opacity-70 hover:opacity-100 bg-white/70 hover:bg-white" />
+								<CarouselNext className="w-10 h-10 -right-12 opacity-70 hover:opacity-100 bg-white/70 hover:bg-white" />
 							</Carousel>
 						</div>
 					</div>
