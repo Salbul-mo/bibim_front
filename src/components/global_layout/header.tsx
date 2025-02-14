@@ -67,12 +67,13 @@ export default function Header() {
 				<Link href="/" className="flex items-center gap-2">
 					<Image src={logosrc} alt="Code Craft" width={130} height={130} priority />
 				</Link>
-
-				<Link href="/course/list">
-					<Button asChild>
-						<span>강의 목록</span>
-					</Button>
-				</Link>
+				{isAuthenticated && (
+					<Link href="/course/list">
+						<Button asChild>
+							<span>강의 목록</span>
+						</Button>
+					</Link>
+				)}
 
 				<div className="flex items-center gap-6">
 					{isAuthenticated && <CartSheet />}
