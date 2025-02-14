@@ -100,7 +100,11 @@ function LoginForm() {
 						)}
 					/>
 
-					<Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+					<Button
+						type="submit"
+						className="w-full bg-gray-300 text-text dark:bg-gray-200 dark:text-white hover:bg-gray-400 dark:hover:bg-gray-300"
+						disabled={form.formState.isSubmitting}
+					>
 						{form.formState.isSubmitting ? "처리 중..." : "로그인"}
 					</Button>
 				</form>

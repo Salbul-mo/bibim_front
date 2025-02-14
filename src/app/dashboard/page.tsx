@@ -13,10 +13,26 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export default function DashboardPage() {
 	const carouselItems = [
-		"/images/index/coursesample.png",
-		"/images/index/courseSample-one.jpg",
-		"/images/index/courseSample-two.jpg",
-		"/images/index/courseSample-three.jpg",
+		{
+			src: "/images/index/coursesample.png",
+			courseName: "개발자의 정석",
+			courseInfo: "개발자의 기본을 잡습니다.",
+		},
+		{
+			src: "/images/index/courseSample-one.jpg",
+			courseName: "자바의 정석",
+			cousreInfo: "자바의 기본을 잡습니다.",
+		},
+		{
+			src: "/images/index/courseSample-two.jpg",
+			courseName: "JavaScript 시작",
+			courseInfo: "자바스크립트 시작하기",
+		},
+		{
+			src: "/images/index/courseSample-three.jpg",
+			courseName: "React 시작",
+			courseInfo: "리액트 시작하기",
+		},
 	];
 
 	return (
@@ -84,15 +100,21 @@ export default function DashboardPage() {
 												<div className="p-1">
 													<Card className="border-0 bg-transparent">
 														<CardContent className="relative aspect-[16/9] p-0">
+															<div className="absolute top-4 left-4 px-2 py-1 rounded-full text-gray-200 dark:text-gray-300">
+																{item.courseName}
+															</div>
 															<Image
-																src={item}
+																src={item.src}
 																alt={`강의 샘플 ${index + 1}`}
 																fill
 																className="object-cover rounded-lg"
 																priority={index === 0}
 															/>
-															<div className="absolute bottom-4 right-4 bg-white/80 px-2 py-1 rounded-full">
+															<div className="absolute bottom-4 right-4 px-2 py-1 rounded-full text-black dark:text-black">
 																{index + 1} / {carouselItems.length}
+															</div>
+															<div className="absolute bottom-4 left-4 px-2 py-1 rounded-full text-gray-200 dark:text-gray-300">
+																{item.courseInfo}
 															</div>
 														</CardContent>
 													</Card>
