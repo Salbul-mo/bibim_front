@@ -70,7 +70,13 @@ export default function Video({ classId }: VideoProps) {
 		<div className="h-fit">
 			<div className="">
 				{/* 비디오 영역 */}
-				<video ref={videoRef} controls autoPlay className="w-full h-fit rounded-lg"></video>
+				<video
+					ref={videoRef}
+					crossOrigin="anonymous"
+					controls
+					autoPlay
+					className="w-full h-fit rounded-lg"
+				></video>
 
 				{/* 강의 제목 및 설명 영역 */}
 				<div className="mt-6 p-4">
