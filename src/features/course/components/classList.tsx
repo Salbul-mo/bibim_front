@@ -50,11 +50,11 @@ export default function ClassList({
 	}, [courseId]);
 
 	return (
-		<div className="text-black h-full flex flex-col">
-			<section className="border-b border-gray-400 py-4 mb-4">
+		<div className="text-text dark:text-dark-text h-full flex flex-col">
+			<section className="border-b border-gray-400 dark:border-gray-600 py-4 mb-4">
 				<p className="text-2xl font-bold mb-2">커리큘럼</p>
 				<p className="text-xl font-semibold mb-1">✏️ 스프링 핵심 원리 - 기본편</p>
-				<p className="text-sm text-gray-600">
+				<p className="text-sm text-gray-600 dark:text-gray-400">
 					Java Spring(자바 스프링) 핵심원리를 다루는 기본편 강의
 				</p>
 			</section>

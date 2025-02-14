@@ -138,16 +138,18 @@ export function CartSheet() {
 				</div>
 
 				<SheetFooter className="border-t p-4">
-					<div className="flex justify-between w-full mb-4">
-						<span>총 수량:</span>
-						<span className="font-medium">{totalCount}개</span>
+					<div className="flex flex-row justify-between items-center w-full mb-4">
+						<span className="whitespace-nowrap">총 수량:</span>
+						<span className="font-medium whitespace-nowrap">{totalCount}개</span>
 					</div>
-					<div className="flex justify-between w-full">
-						<span>총 금액:</span>
+					<div className="flex flex-row justify-between items-center w-full">
+						<span className="whitespace-nowrap">총 금액:</span>
 						{isLoading ? (
 							<Skeleton className="h-6 w-32" />
 						) : (
-							<span className="font-bold text-primary">₩{(totalPrice ?? 0).toLocaleString()}</span>
+							<span className="font-bold text-primary whitespace-nowrap">
+								₩{(totalPrice ?? 0).toLocaleString()}
+							</span>
 						)}
 					</div>
 					<Button className="w-full mt-4" onClick={checkoutHandler}>

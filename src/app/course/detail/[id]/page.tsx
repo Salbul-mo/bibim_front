@@ -90,7 +90,7 @@ export default function CourseDetailPage() {
 			<div className="container mx-auto px-4 pt-24 pb-12">
 				<div className="max-w-5xl mx-auto">
 					{/* 강의 기본 정보 */}
-					<div className="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+					<div className="bg-background dark:bg-dark-background-foreground rounded-lg shadow-md overflow-hidden mb-8">
 						<div className="md:flex">
 							{/* 강의 이미지 */}
 							<div className="md:w-1/3">
@@ -103,8 +103,8 @@ export default function CourseDetailPage() {
 											className="object-cover"
 										/>
 									) : (
-										<div className="w-full h-full flex items-center justify-center bg-gray-200">
-											<span className="text-gray-400">No Image</span>
+										<div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-700">
+											<span className="text-gray-400 dark:text-gray-500">No Image</span>
 										</div>
 									)}
 								</div>
@@ -113,29 +113,35 @@ export default function CourseDetailPage() {
 							{/* 강의 정보 */}
 							<div className="md:w-2/3 p-6">
 								<div className="flex items-center gap-2 mb-2">
-									<span className="bg-primary/10 text-primary px-2 py-1 rounded text-sm">
+									<span className="bg-primary/10 dark:bg-primary/20 text-primary dark:text-dark-primary px-2 py-1 rounded text-sm">
 										{courseDetail.courseSubject}
 									</span>
-									<span className="bg-gray-100 px-2 py-1 rounded text-sm">
+									<span className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded text-sm">
 										{courseDetail.courseDiff}
 									</span>
 								</div>
 
-								<h1 className="text-2xl font-bold mb-4">{courseDetail.courseName}</h1>
-								<p className="text-gray-600 mb-4">{courseDetail.courseInfo}</p>
+								<h1 className="text-2xl font-bold mb-4 text-text dark:text-dark-text">
+									{courseDetail.courseName}
+								</h1>
+								<p className="text-gray-600 dark:text-gray-400 mb-4">{courseDetail.courseInfo}</p>
 
 								<div className="flex items-center gap-4 mb-4">
 									<div>
-										<p className="text-sm text-gray-500">강사</p>
-										<p className="font-medium">{courseDetail.teacherName}</p>
+										<p className="text-sm text-gray-500 dark:text-gray-400">강사</p>
+										<p className="font-medium text-text dark:text-dark-text">
+											{courseDetail.teacherName}
+										</p>
 									</div>
 									<div>
-										<p className="text-sm text-gray-500">총 강의 수</p>
-										<p className="font-medium">{courseDetail.classCount}개</p>
+										<p className="text-sm text-gray-500 dark:text-gray-400">총 강의 수</p>
+										<p className="font-medium text-text dark:text-dark-text">
+											{courseDetail.classCount}개
+										</p>
 									</div>
 									<div>
-										<p className="text-sm text-gray-500">수강료</p>
-										<p className="font-medium text-primary">
+										<p className="text-sm text-gray-500 dark:text-gray-400">수강료</p>
+										<p className="font-medium text-primary dark:text-dark-primary">
 											₩{courseDetail.coursePrice.toLocaleString()}
 										</p>
 									</div>
@@ -157,22 +163,30 @@ export default function CourseDetailPage() {
 					</div>
 
 					{/* 강의 목차 */}
-					<div className="bg-white rounded-lg shadow-md p-6">
-						<h2 className="text-xl font-bold mb-4">강의 목차</h2>
+					<div className="bg-background dark:bg-dark-background-foreground rounded-lg shadow-md p-6">
+						<h2 className="text-xl font-bold mb-4 text-text dark:text-dark-text">강의 목차</h2>
 						<div className="space-y-3">
 							{courseDetail.classList.map((classItem, index) => (
 								<div
 									key={classItem.classId}
-									className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors"
+									className="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
 								>
-									<div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-										<span className="text-primary font-medium">{index + 1}</span>
+									<div className="flex-shrink-0 w-8 h-8 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center">
+										<span className="text-primary dark:text-dark-primary font-medium">
+											{index + 1}
+										</span>
 									</div>
 									<div className="flex-grow">
-										<h3 className="font-medium">{classItem.className}</h3>
-										<p className="text-sm text-gray-500">{classItem.classContent}</p>
+										<h3 className="font-medium text-text dark:text-dark-text">
+											{classItem.className}
+										</h3>
+										<p className="text-sm text-gray-500 dark:text-gray-400">
+											{classItem.classContent}
+										</p>
 									</div>
-									<div className="text-sm text-gray-500">{classItem.classType}</div>
+									<div className="text-sm text-gray-500 dark:text-gray-400">
+										{classItem.classType}
+									</div>
 								</div>
 							))}
 						</div>

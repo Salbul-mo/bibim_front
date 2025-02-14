@@ -17,10 +17,10 @@ export default function LecturePlayer() {
 	};
 
 	return (
-		<div className="min-h-screen pt-12">
+		<div className="min-h-screen pt-12 bg-background dark:bg-dark-background">
 			<main className="container mx-auto px-4 py-6 flex flex-col lg:flex-row gap-6">
 				{/* 강의 리스트 */}
-				<aside className="lg:w-1/3 bg-white rounded-lg shadow-lg p-4 lg:h-screen overflow-hidden h-full">
+				<aside className="lg:w-1/3 bg-background dark:bg-dark-background-foreground rounded-lg shadow-lg p-4 lg:h-screen overflow-hidden h-full">
 					<ClassList
 						courseId={courseId || ""}
 						videoPath={videoPath}
@@ -30,11 +30,11 @@ export default function LecturePlayer() {
 				</aside>
 
 				{/* 비디오 재생 영역 */}
-				<section className="lg:w-2/3 bg-white rounded-lg shadow-lg p-4 h-fit">
+				<section className="lg:w-2/3 bg-background dark:bg-dark-background-foreground rounded-lg shadow-lg p-4 h-fit">
 					<Video classId={classId} />
 				</section>
 			</main>
-			<p>현재 강의 ID: {courseId}</p>
+			<p className="text-text dark:text-dark-text">현재 강의 ID: {courseId}</p>
 		</div>
 	);
 }

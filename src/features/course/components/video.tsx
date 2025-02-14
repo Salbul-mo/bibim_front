@@ -86,10 +86,12 @@ export default function Video({ classId }: VideoProps) {
 
 				{/* 강의 제목 및 설명 영역 */}
 				<div className="mt-6 p-4">
-					<h1 className="text-2xl font-bold text-gray-800 pb-2 border-b-2 border-solid border-gray-400">
+					<h1 className="text-2xl font-bold text-text dark:text-dark-text pb-2 border-b-2 border-solid border-gray-400 dark:border-gray-600">
 						{classDetail?.className}
 					</h1>
-					<p className="mt-4 text-gray-600 leading-relaxed">{classDetail?.classContent}</p>
+					<p className="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
+						{classDetail?.classContent}
+					</p>
 				</div>
 			</div>
 		</div>
