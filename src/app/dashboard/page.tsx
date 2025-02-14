@@ -71,14 +71,14 @@ export default function DashboardPage() {
 								opts={{
 									align: "center",
 									loop: true,
-									skipSnaps: false,
-									containScroll: false,
+									skipSnaps: true,
+									containScroll: "trimSnaps",
 								}}
 								className="w-full max-w-[500px] mx-auto relative group"
 							>
-								<CarouselContent>
+								<CarouselContent className="-ml-1">
 									{carouselItems.map((item, index) => (
-										<CarouselItem key={index} className="basis-full">
+										<CarouselItem key={index} className="pl-1 basis-full">
 											<div className="p-1">
 												<Card className="border-0 bg-transparent">
 													<CardContent className="relative aspect-square p-0">
@@ -89,6 +89,9 @@ export default function DashboardPage() {
 															className="object-cover rounded-lg"
 															priority={index === 0}
 														/>
+														<div className="absolute bottom-4 right-4 bg-white/80 px-2 py-1 rounded-full">
+															{index + 1} / {carouselItems.length}
+														</div>
 													</CardContent>
 												</Card>
 											</div>
