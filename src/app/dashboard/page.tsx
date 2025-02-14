@@ -21,7 +21,7 @@ export default function DashboardPage() {
 		{
 			src: "/images/index/courseSample-one.jpg",
 			courseName: "자바의 정석",
-			cousreInfo: "자바의 기본을 잡습니다.",
+			courseInfo: "자바의 기본을 잡습니다.",
 		},
 		{
 			src: "/images/index/courseSample-two.jpg",
@@ -113,7 +113,7 @@ export default function DashboardPage() {
 														</CardContent>
 													</Card>
 												</div>
-												<div className="p-4 bg-white dark:bg-gray-800 rounded-b-lg">
+												<div className="p-4 w-[592.02px] bg-white dark:bg-gray-800 rounded-b-lg">
 													<h3 className="font-medium text-lg text-gray-900 dark:text-gray-100 mb-2">
 														{item.courseName}
 													</h3>
