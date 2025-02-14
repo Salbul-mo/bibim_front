@@ -28,18 +28,23 @@ export default function Video({ classId }: VideoProps) {
 
 	useEffect(() => {
 		async function fetchClassDetailAndLoadVideo() {
-			// 토큰과 classId가 없으면 진행하지 않음
 			if (!tokens?.accessToken || !classId) return;
 
 			try {
-				// API 호출을 통해 강의 상세 정보를 가져옴
 				const data = await getClassDetail(tokens.accessToken, classId);
 				if (data && data.classDetail) {
-					console.log("data : ", data);
+					// S3 URL을 CloudFront URL로 변경
+					const cloudFrontUrl = data.classDetail.classFilePath.replace(
+						"https://s3.ap-northeast-2.amazonaws.com/jabibimbucket/",
+						"https://dj9htmn55yij5.cloudfront.net/"
+					);
 
-					setClassDetail(data.classDetail);
+					// 수정된 URL로 classDetail 업데이트
+					setClassDetail({
+						...data.classDetail,
+						classFilePath: cloudFrontUrl,
+					});
 
-					// 동적으로 shaka-player(샤카 플레이어) 모듈을 로드
 					const { default: shaka } = await import("shaka-player");
 					if (!shaka.Player.isBrowserSupported()) {
 						console.error("지원되지 않는 브라우저입니다.");
@@ -55,7 +60,8 @@ export default function Video({ classId }: VideoProps) {
 						});
 					}
 
-					await player.load(data.classDetail.classFilePath);
+					// 수정된 URL로 비디오 로드
+					await player.load(cloudFrontUrl);
 					console.log("The video has been loaded successfully!");
 				}
 			} catch (error) {

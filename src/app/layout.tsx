@@ -25,7 +25,7 @@ export default function RootLayout({
 					<AuthProvider>
 						<div suppressHydrationWarning className="justify-center flex min-h-screen flex-col">
 							<Header />
-							<main className="flex-1 bg-background dark:bg-dark-background">{children}</main>
+							<main className="flex-1">{children}</main>
 							<Footer />
 						</div>
 					</AuthProvider>
