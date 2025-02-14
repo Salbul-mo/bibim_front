@@ -74,8 +74,8 @@ export default function DashboardPage() {
 												<Image
 													src={item}
 													alt="과정 샘플"
-													fill
-													sizes="(max-width: 768px) 100vw, 50vw"
+													width={650}
+													height={650}
 													className="object-cover rounded-lg"
 												/>
 											</div>
