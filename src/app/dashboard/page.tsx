@@ -22,7 +22,7 @@ export default function DashboardPage() {
 	return (
 		<div>
 			{/* 메인 컨텐츠 */}
-			<div className="relative mt-20 mb-20 flex flex-col items-center justify-center">
+			<div className="relative mt-20 flex flex-col items-center justify-center">
 				<div className="relative z-20">
 					<h1 className="pt-24 text-center text-5xl font-semibold  text-text dark:text-dark-text bg-background dark:bg-dark-background-foreground sm:text-5xl md:text-6xl">
 						Clone Startups.
@@ -60,7 +60,7 @@ export default function DashboardPage() {
 				></div>
 
 				{/* 전체 너비 컨테이너 */}
-				<div className="relative w-full bg-gray-700 dark:bg-blue-900 mt-[276px]">
+				<div className="relative w-full bg-gray-700 dark:bg-blue-900 my-[276px]">
 					{/* 내부 컨텐츠 중앙 정렬 컨테이너 */}
 					<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
 						<div className="pb-20 pt-10 sm:pt-8 md:pt-12 lg:pt-16 xl:pt-24">
