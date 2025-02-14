@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import Link from "next/link";
 import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function DashboardPage() {
 	const carouselItems = [
@@ -65,35 +66,32 @@ export default function DashboardPage() {
 					</h6>
 					{/* 내부 컨텐츠 중앙 정렬 컨테이너 */}
 					<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-						<div className="pb-20 pt-10">
-							<Carousel>
-								<CarouselContent>
-									{carouselItems.map((item, index) => (
-										<CarouselItem key={index}>
-											<div className="relative w-full h-64 md:h-96">
-												<Image
-													src={item}
-													alt={`강의 샘플 ${index + 1}`}
-													fill
-													sizes="(max-width: 768px) 100vw, 80vw"
-													className="object-cover rounded-lg"
-												/>
-											</div>
-										</CarouselItem>
-									))}
-								</CarouselContent>
-
-								{/* 네비게이션 버튼 */}
-								<div className="flex justify-center gap-2 mt-4">
-									<CarouselPrevious className="static translate-x-0" />
-									<CarouselNext className="static translate-x-0" />
-								</div>
-							</Carousel>
-						</div>
+						<Carousel className="w-full max-w-xs	">
+							<CarouselContent>
+								{carouselItems.map((item, index) => (
+									<CarouselItem key={index}>
+										<div className="relative w-full h-64 md:h-96">
+											<Card>
+												<CardContent className="flex aspect-square items-center justify-center p-6">
+													<Image
+														src={item}
+														alt={`강의 샘플 ${index + 1}`}
+														fill
+														sizes="(max-width: 768px) 100vw, 80vw"
+														className="object-cover rounded-lg"
+													/>
+												</CardContent>
+											</Card>
+										</div>
+									</CarouselItem>
+								))}
+							</CarouselContent>
+							{/* 네비게이션 버튼 */}
+							<CarouselPrevious />
+							<CarouselNext />
+						</Carousel>
 					</div>
 				</div>
-
-				{/* 리뷰 */}
 			</div>
 		</div>
 	);
